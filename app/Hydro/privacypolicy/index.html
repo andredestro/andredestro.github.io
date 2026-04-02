@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Privacy Policy</h1>
-        <p><strong>Last updated:</strong> 2026</p>
+        <p><strong>Last updated:</strong> April 2026</p>
 
         <p>
             Hydro ("we", "our", or "us") respects your privacy. This Privacy
@@ -17,14 +17,16 @@
 
         <h2>1. Information We Collect</h2>
         <p>
-            Hydro does not collect or store personal data on external servers.
+            Hydro does not collect or store personal data on external servers
+            owned by us.
         </p>
         <p>
             All data you create in the app (such as hydration entries, daily
-            goals, and settings) is stored locally on your device using
-            SwiftData.
+            goals, and settings) is stored on your device using SwiftData and
+            automatically synced across your devices via your personal iCloud
+            account using Apple's CloudKit service.
         </p>
-        <p>We do not have access to any data on your device.</p>
+        <p>We do not have access to your iCloud data.</p>
 
         <h2>2. Data Usage</h2>
         <ul>
@@ -51,49 +53,67 @@
             device.
         </p>
 
-        <h2>5. Apple Watch</h2>
+        <h2>5. Apple Health</h2>
+        <p>
+            Hydro can optionally write your water intake entries to Apple Health
+            as Dietary Water. This feature is disabled by default and can be
+            enabled or disabled at any time in the app's Settings under
+            "Integrations". No health data is transmitted to our servers — all
+            data flows directly between Hydro and the Health app on your device
+            via Apple's HealthKit framework.
+        </p>
+
+        <h2>6. Apple Watch</h2>
         <p>
             If you use the Apple Watch companion app (Premium feature), your
             hydration data is shared between your iPhone and Apple Watch using
-            a local App Group container. No data leaves your devices.
+            a local App Group container. Data is also synced to your other
+            devices via iCloud/CloudKit using the same mechanism as the main app.
         </p>
 
-        <h2>6. In-App Purchases</h2>
+        <h2>7. In-App Purchases</h2>
         <p>
             Payments are handled entirely by Apple via StoreKit. We do not
             collect or store any payment or billing information.
         </p>
 
-        <h2>7. Data Sharing</h2>
+        <h2>8. Data Sharing</h2>
         <p>We do not share, sell, or transfer your data to third parties.</p>
 
-        <h2>8. Third-Party Services</h2>
+        <h2>9. Third-Party Services</h2>
         <ul>
+            <li>Apple iCloud (CloudKit) — cross-device data sync</li>
+            <li>Apple HealthKit — optional Dietary Water logging (opt-in)</li>
             <li>StoreKit (in-app purchases)</li>
             <li>iOS system frameworks (WidgetKit, UserNotifications, WatchKit)</li>
         </ul>
 
-        <h2>9. Data Security</h2>
+        <h2>10. Data Security</h2>
         <p>
-            Your data is stored locally on your device and protected by Apple's
-            built-in security features, including device encryption.
+            Your data is stored on your device and in your personal iCloud
+            account, protected by Apple's built-in security features including
+            device encryption and iCloud end-to-end encryption where applicable.
         </p>
 
-        <h2>10. Your Control</h2>
+        <h2>11. Your Control</h2>
         <ul>
             <li>Delete individual hydration entries anytime</li>
             <li>Disable reminders in the app settings</li>
             <li>Reset your daily goal and preferences at any time</li>
+            <li>Enable or disable Apple Health sync in Settings → Integrations</li>
+            <li>Revoke HealthKit access via iOS Settings → Health → Data Access &amp; Devices → Hydro</li>
+            <li>Disable iCloud sync via iOS Settings → [Your Name] → iCloud → Hydro</li>
+            <li>Delete iCloud data via iOS Settings → [Your Name] → iCloud → Manage Storage</li>
             <li>Delete the app to permanently remove all local data</li>
         </ul>
 
-        <h2>11. Children's Privacy</h2>
+        <h2>12. Children's Privacy</h2>
         <p>Hydro does not knowingly collect data from children under 13.</p>
 
-        <h2>12. Changes</h2>
+        <h2>13. Changes</h2>
         <p>This policy may be updated. Changes will be reflected here.</p>
 
-        <h2>13. Contact</h2>
+        <h2>14. Contact</h2>
         <p>support.myapps@gmail.com</p>
     </body>
 </html>
