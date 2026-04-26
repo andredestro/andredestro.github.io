@@ -5,95 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Andre Destro — iOS Developer</title>
 
+  <link rel="canonical" href="https://andredestro.github.io/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+
+  <!-- SEO -->
+  <meta name="description" content="Andre Destro is an iOS developer building simple, fast and useful apps for everyday life — including Sleep Wave, Hydro, ProteinLog and more." />
+  <meta name="author" content="Andre Destro" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andredestro.github.io/" />
+  <meta property="og:title" content="Andre Destro — iOS Developer" />
+  <meta property="og:description" content="Simple, fast and useful apps for everyday life." />
+  <meta property="og:image" content="https://andredestro.github.io/og-image.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Andre Destro — iOS Developer" />
+  <meta name="twitter:description" content="Simple, fast and useful apps for everyday life." />
+  <meta name="twitter:image" content="https://andredestro.github.io/og-image.png" />
+
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: #0f0f0f;
       color: #fff;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 960px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 24px 40px;
     }
 
     h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+      font-size: 36px;
+      margin: 0;
+      letter-spacing: -0.5px;
     }
 
     p.subtitle {
-      color: #aaa;
-      margin-bottom: 40px;
+      color: #888;
+      margin: 0 0 48px;
+      font-size: 15px;
     }
 
+    /* Grid */
     .apps {
       display: grid;
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
 
+    @media (max-width: 600px) {
+      .apps {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 28px;
+      }
+    }
+
+    /* Card */
     .card {
       background: #1a1a1a;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: 0.2s;
+      gap: 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s, transform 0.15s;
+      border: 1px solid #ffffff08;
     }
 
     .card:hover {
       background: #222;
       transform: translateY(-2px);
+      border-color: #ffffff14;
+    }
+
+    .card-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .app-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      object-fit: cover;
     }
 
     .app-info {
-      max-width: 70%;
+      min-width: 0;
     }
 
     .app-title {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .app-desc {
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 5px;
+      font-size: 12px;
+      color: #888;
+      margin-top: 3px;
     }
 
+    /* Download button */
     .btn {
       background: #0a84ff;
       color: white;
-      padding: 10px 16px;
-      border-radius: 10px;
+      padding: 8px 14px;
+      border-radius: 20px;
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+      letter-spacing: 0.1px;
+      transition: background 0.15s;
     }
 
+    .btn:hover {
+      background: #2196f3;
+    }
+
+    .btn.coming-soon {
+      background: #2a2a2a;
+      color: #666;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* Social links */
     .links {
-      margin-top: 40px;
+      margin-top: 48px;
       display: flex;
       gap: 20px;
     }
 
     .links a {
-      color: #aaa;
+      color: #666;
       text-decoration: none;
       font-size: 14px;
+      transition: color 0.15s;
     }
 
     .links a:hover {
-      color: white;
+      color: #fff;
     }
 
     .footer {
-      margin-top: 60px;
+      margin-top: 32px;
       font-size: 12px;
-      color: #666;
+      color: #444;
     }
   </style>
 </head>
@@ -102,65 +182,81 @@
   <div class="container">
 
     <h1>Andre Destro</h1>
-    <p class="subtitle">
-      iOS Developer building simple, fast and useful apps for everyday life.
-    </p>
+    <p class="subtitle">iOS Developer building simple, fast and useful apps for everyday life.</p>
 
     <div class="apps">
 
       <div class="card">
-        <div class="app-info">
-          <div class="app-title">Sleep Wave</div>
-          <div class="app-desc">Relaxing sounds, white noise and sleep tools</div>
+        <div class="card-left">
+          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/89/75/b9897583-45a0-e14b-d5cd-be0e886b85da/AppIcon-0-1x_U007epad-0-1-85-220-0.jpeg/512x512bb.jpg" alt="Sleep Wave icon" />
+          <div class="app-info">
+            <div class="app-title">Sleep Wave</div>
+            <div class="app-desc">Relaxing sounds, white noise and sleep tools</div>
+          </div>
         </div>
-        <a class="btn" href="https://apps.apple.com/br/app/sleep-wave-sounds-noise/id6761343537" target="_blank">Download</a>
+        <a class="btn" href="https://apps.apple.com/app/sleep-wave-sounds-noise/id6761343537" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="card">
-        <div class="app-info">
-          <div class="app-title">Hydro</div>
-          <div class="app-desc">Simple water tracker with reminders</div>
+        <div class="card-left">
+          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f3/50/40/f35040dd-a6b4-b7ba-29b2-252e3712043b/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="Hydro icon" />
+          <div class="app-info">
+            <div class="app-title">Hydro</div>
+            <div class="app-desc">Simple water tracker with reminders</div>
+          </div>
         </div>
-        <a class="btn" href="https://apps.apple.com/br/app/hydro-water-tracker/id6761480955" target="_blank">Download</a>
+        <a class="btn" href="https://apps.apple.com/app/hydro-water-tracker/id6761480955" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="card">
-        <div class="app-info">
-          <div class="app-title">ProteinLog</div>
-          <div class="app-desc">Track your daily protein intake easily</div>
+        <div class="card-left">
+          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bb/44/5e/bb445e86-24d2-40bc-b1db-2e65e7c648e7/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="ProteinLog icon" />
+          <div class="app-info">
+            <div class="app-title">ProteinLog</div>
+            <div class="app-desc">Track your daily protein intake easily</div>
+          </div>
         </div>
-        <a class="btn" href="https://apps.apple.com/br/app/proteinlog-protein-tracker/id6760777475" target="_blank">Download</a>
+        <a class="btn" href="https://apps.apple.com/app/proteinlog-protein-tracker/id6760777475" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="card">
-        <div class="app-info">
-          <div class="app-title">Vitamin Reminder (SuppTrack)</div>
-          <div class="app-desc">Manage vitamins and supplement routines</div>
+        <div class="card-left">
+          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/57/e5/30/57e53083-2c46-7e8e-7a33-6ee3e06b3efe/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="Vitamin Reminder icon" />
+          <div class="app-info">
+            <div class="app-title">Vitamin Reminder</div>
+            <div class="app-desc">Manage vitamins and supplement routines</div>
+          </div>
         </div>
-        <a class="btn" href="https://apps.apple.com/br/app/vitamin-reminder-supptrack/id6760776654" target="_blank">Download</a>
+        <a class="btn" href="https://apps.apple.com/app/vitamin-reminder-supptrack/id6760776654" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="card">
-        <div class="app-info">
-          <div class="app-title">RestForge</div>
-          <div class="app-desc">Rest timer for workouts and training</div>
+        <div class="card-left">
+          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/e5/f5/bce5f5b8-1aa6-fa2b-89a3-dabb589d6dbf/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="RestForge icon" />
+          <div class="app-info">
+            <div class="app-title">RestForge</div>
+            <div class="app-desc">Rest timer for workouts and training</div>
+          </div>
         </div>
-        <a class="btn" href="https://apps.apple.com/br/app/restforge/id6760730251" target="_blank">Download</a>
+        <a class="btn" href="https://apps.apple.com/app/restforge/id6760730251" target="_blank" rel="noopener">Download</a>
       </div>
 
       <div class="card">
-        <div class="app-info">
-          <div class="app-title">ExpiryLog</div>
-          <div class="app-desc">Track expiration dates and avoid waste</div>
+        <div class="card-left">
+          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/69/2f/19/692f1967-2f9d-73db-75a5-9247c2534e2d/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="ExpiryLog icon" />
+          <div class="app-info">
+            <div class="app-title">ExpiryLog</div>
+            <div class="app-desc">Track expiration dates and avoid waste</div>
+          </div>
         </div>
-        <a class="btn" href="https://apps.apple.com/br/app/expirylog/id6760726582" target="_blank">Download</a>
+        <a class="btn" href="https://apps.apple.com/app/expirylog/id6760726582" target="_blank" rel="noopener">Download</a>
       </div>
 
     </div>
 
     <div class="links">
-      <a href="https://github.com/andredestro" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/andredestro" target="_blank">LinkedIn</a>
+      <a href="https://github.com/andredestro" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener">LinkedIn</a>
     </div>
 
     <div class="footer">
