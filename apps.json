@@ -35,6 +35,12 @@
       "name": "ExpiryLog",
       "subtitle": "Track expiration dates",
       "appStoreUrl": "https://apps.apple.com/app/expirylog/id6760726582"
+    },
+    {
+      "id": "novumi",
+      "name": "Novumi: Countdowns",
+      "subtitle": "Track life's big moments",
+      "appStoreUrl": "https://apps.apple.com/app/novumi-countdowns/id6764404814"
     }
   ]
 }
