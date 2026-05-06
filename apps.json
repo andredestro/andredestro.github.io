@@ -1,0 +1,40 @@
+{
+  "apps": [
+    {
+      "id": "sleep_wave",
+      "name": "Sleep Wave",
+      "subtitle": "Sounds & White Noise",
+      "appStoreUrl": "https://apps.apple.com/app/sleep-wave-sounds-noise/id6761343537"
+    },
+    {
+      "id": "hydro",
+      "name": "Hydro — Water Tracker",
+      "subtitle": "Daily hydration reminders",
+      "appStoreUrl": "https://apps.apple.com/app/hydro-water-tracker/id6761480955"
+    },
+    {
+      "id": "protein_log",
+      "name": "ProteinLog",
+      "subtitle": "Protein & macro tracker",
+      "appStoreUrl": "https://apps.apple.com/app/proteinlog-protein-tracker/id6760777475"
+    },
+    {
+      "id": "supp_track",
+      "name": "SuppTrack",
+      "subtitle": "Vitamin & supplement reminder",
+      "appStoreUrl": "https://apps.apple.com/app/vitamin-reminder-supptrack/id6760776654"
+    },
+    {
+      "id": "rest_forge",
+      "name": "RestForge",
+      "subtitle": "Gym rest timer",
+      "appStoreUrl": "https://apps.apple.com/app/restforge/id6760730251"
+    },
+    {
+      "id": "expiry_log",
+      "name": "ExpiryLog",
+      "subtitle": "Track expiration dates",
+      "appStoreUrl": "https://apps.apple.com/app/expirylog/id6760726582"
+    }
+  ]
+}
