@@ -209,6 +209,8 @@
     };
 
     const appsContainer = document.querySelector("#apps");
+    const appStoreProviderToken = "75035800";
+    const appStoreCampaignToken = "github_io";
     const pendingAnalyticsEvents = [];
     let analytics = null;
     let analyticsReady = false;
@@ -254,7 +256,16 @@
       }
     }
 
+    function appStoreCampaignUrl(urlString) {
+      const url = new URL(urlString);
+      url.searchParams.set("pt", appStoreProviderToken);
+      url.searchParams.set("ct", appStoreCampaignToken);
+      url.searchParams.set("mt", "8");
+      return url.toString();
+    }
+
     function createAppCard(app) {
+      const appStoreUrl = appStoreCampaignUrl(app.appStoreUrl);
       const card = document.createElement("div");
       card.className = "card";
 
@@ -280,7 +291,7 @@
 
       const button = document.createElement("a");
       button.className = "btn";
-      button.href = app.appStoreUrl;
+      button.href = appStoreUrl;
       button.target = "_blank";
       button.rel = "noopener";
       button.textContent = "Download";
@@ -288,7 +299,8 @@
         trackEvent("app_download_click", {
           app_id: app.id,
           app_name: app.name,
-          destination_url: app.appStoreUrl
+          campaign_token: appStoreCampaignToken,
+          destination_url: appStoreUrl
         });
       });
 
