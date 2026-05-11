@@ -8,348 +8,56 @@
   <link rel="canonical" href="https://andredestro.github.io/" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="stylesheet" href="/assets/site.css" />
 
-  <!-- SEO -->
   <meta name="description" content="Andre Destro is an iOS developer building simple, fast and useful apps for everyday life — including Sleep Wave, Hydro, ProteinLog and more." />
   <meta name="author" content="Andre Destro" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://andredestro.github.io/" />
   <meta property="og:title" content="Andre Destro — iOS Developer" />
   <meta property="og:description" content="Simple, fast and useful apps for everyday life." />
   <meta property="og:image" content="https://andredestro.github.io/og-image.png" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Andre Destro — iOS Developer" />
   <meta name="twitter:description" content="Simple, fast and useful apps for everyday life." />
   <meta name="twitter:image" content="https://andredestro.github.io/og-image.png" />
-
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f0f0f;
-      color: #fff;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 60px 24px 40px;
-    }
-
-    h1 {
-      font-size: 36px;
-      margin: 0;
-      letter-spacing: -0.5px;
-    }
-
-    p.subtitle {
-      color: #888;
-      margin: 0 0 48px;
-      font-size: 15px;
-    }
-
-    /* Grid */
-    .apps {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    @media (max-width: 600px) {
-      .apps {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 28px;
-      }
-    }
-
-    /* Card */
-    .card {
-      background: #1a1a1a;
-      border-radius: 18px;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      text-decoration: none;
-      color: inherit;
-      transition: background 0.15s, transform 0.15s;
-      border: 1px solid #ffffff08;
-    }
-
-    .card:hover {
-      background: #222;
-      transform: translateY(-2px);
-      border-color: #ffffff14;
-    }
-
-    .card-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .app-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 12px;
-      flex-shrink: 0;
-      object-fit: cover;
-    }
-
-    .app-info {
-      min-width: 0;
-    }
-
-    .app-title {
-      font-size: 15px;
-      font-weight: 600;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .app-desc {
-      font-size: 12px;
-      color: #888;
-      margin-top: 3px;
-    }
-
-    /* Download button */
-    .btn {
-      background: #0a84ff;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 600;
-      white-space: nowrap;
-      flex-shrink: 0;
-      letter-spacing: 0.1px;
-      transition: background 0.15s;
-    }
-
-    .btn:hover {
-      background: #2196f3;
-    }
-
-    .btn.coming-soon {
-      background: #2a2a2a;
-      color: #666;
-      cursor: default;
-      pointer-events: none;
-    }
-
-    /* Social links */
-    .links {
-      margin-top: 48px;
-      display: flex;
-      gap: 20px;
-    }
-
-    .links a {
-      color: #666;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.15s;
-    }
-
-    .links a:hover {
-      color: #fff;
-    }
-
-    .footer {
-      margin-top: 32px;
-      font-size: 12px;
-      color: #444;
-    }
-  </style>
 </head>
 
 <body>
   <div class="container">
+    <main>
+      <h1>Andre Destro</h1>
+      <p class="subtitle">iOS Developer building simple, fast and useful apps for everyday life.</p>
 
-    <h1>Andre Destro</h1>
-    <p class="subtitle">iOS Developer building simple, fast and useful apps for everyday life.</p>
+      <div class="apps" id="apps"></div>
+    </main>
 
-    <div class="apps" id="apps"></div>
-
-    <div class="links">
-      <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
-      <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener" data-social-link="linkedin">LinkedIn</a>
-    </div>
-
-    <div class="footer">
-      © 2026 Andre Destro
-    </div>
-
+    <footer class="footer">
+      <nav class="links" aria-label="Footer links">
+        <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
+        <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener" data-social-link="linkedin">LinkedIn</a>
+        <a href="/privacy/">Privacy &amp; Cookies</a>
+        <button class="link-button" type="button" id="cookie-settings">Cookie Settings</button>
+      </nav>
+      <div>© 2026 Andre Destro</div>
+    </footer>
   </div>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyDI9wEkZE7wLoTtYZd_n6fr9g8S1vLmP8w",
-      authDomain: "andredestro-github-io.firebaseapp.com",
-      projectId: "andredestro-github-io",
-      storageBucket: "andredestro-github-io.firebasestorage.app",
-      messagingSenderId: "506254720829",
-      appId: "1:506254720829:web:df6f930fa0c1d387a60f54",
-      measurementId: "G-57VRNK7NQQ"
-    };
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <div>
+      <p class="cookie-title">Analytics cookies</p>
+      <p class="cookie-copy">
+        I use Firebase Analytics to understand visits and app download clicks. You can accept or decline analytics cookies.
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button class="secondary-btn" type="button" id="decline-analytics">Decline</button>
+      <button class="primary-btn" type="button" id="accept-analytics">Accept</button>
+    </div>
+  </div>
 
-    const appsContainer = document.querySelector("#apps");
-    const appStoreProviderToken = "75035800";
-    const appStoreCampaignToken = "github_io";
-    const pendingAnalyticsEvents = [];
-    let analytics = null;
-    let analyticsReady = false;
-    let logAnalyticsEvent = null;
-
-    function trackEvent(name, params = {}) {
-      if (analytics && logAnalyticsEvent) {
-        logAnalyticsEvent(analytics, name, params);
-        return;
-      }
-
-      if (!analyticsReady) {
-        pendingAnalyticsEvents.push({ name, params });
-      }
-    }
-
-    async function initializeAnalytics() {
-      try {
-        const [firebaseAppModule, firebaseAnalyticsModule] = await Promise.all([
-          import("https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js"),
-          import("https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js")
-        ]);
-
-        const supported = await firebaseAnalyticsModule.isSupported();
-        if (!supported) {
-          analyticsReady = true;
-          pendingAnalyticsEvents.length = 0;
-          return;
-        }
-
-        const firebaseApp = firebaseAppModule.initializeApp(firebaseConfig);
-        analytics = firebaseAnalyticsModule.getAnalytics(firebaseApp);
-        logAnalyticsEvent = firebaseAnalyticsModule.logEvent;
-        analyticsReady = true;
-
-        pendingAnalyticsEvents.splice(0).forEach((event) => {
-          trackEvent(event.name, event.params);
-        });
-      } catch (error) {
-        analyticsReady = true;
-        pendingAnalyticsEvents.length = 0;
-        console.warn("Analytics unavailable.", error);
-      }
-    }
-
-    function appStoreCampaignUrl(urlString) {
-      const url = new URL(urlString);
-      url.searchParams.set("pt", appStoreProviderToken);
-      url.searchParams.set("ct", appStoreCampaignToken);
-      url.searchParams.set("mt", "8");
-      return url.toString();
-    }
-
-    function createAppCard(app) {
-      const appStoreUrl = appStoreCampaignUrl(app.appStoreUrl);
-      const card = document.createElement("div");
-      card.className = "card";
-
-      const cardLeft = document.createElement("div");
-      cardLeft.className = "card-left";
-
-      const icon = document.createElement("img");
-      icon.className = "app-icon";
-      icon.src = app.iconUrl;
-      icon.alt = `${app.name} icon`;
-      icon.loading = "lazy";
-
-      const appInfo = document.createElement("div");
-      appInfo.className = "app-info";
-
-      const title = document.createElement("div");
-      title.className = "app-title";
-      title.textContent = app.name;
-
-      const description = document.createElement("div");
-      description.className = "app-desc";
-      description.textContent = app.subtitle;
-
-      const button = document.createElement("a");
-      button.className = "btn";
-      button.href = appStoreUrl;
-      button.target = "_blank";
-      button.rel = "noopener";
-      button.textContent = "Download";
-      button.addEventListener("click", () => {
-        trackEvent("app_download_click", {
-          app_id: app.id,
-          app_name: app.name,
-          campaign_token: appStoreCampaignToken,
-          destination_url: appStoreUrl
-        });
-      });
-
-      appInfo.append(title, description);
-      cardLeft.append(icon, appInfo);
-      card.append(cardLeft, button);
-
-      return card;
-    }
-
-    async function renderApps() {
-      try {
-        const response = await fetch("./apps.json");
-        if (!response.ok) {
-          throw new Error("Could not load apps.json");
-        }
-
-        const data = await response.json();
-        appsContainer.replaceChildren(...data.apps.map(createAppCard));
-        trackEvent("apps_load_success", {
-          app_count: data.apps.length
-        });
-      } catch (error) {
-        appsContainer.textContent = "Unable to load apps.";
-        trackEvent("apps_load_error", {
-          message: error.message
-        });
-        console.error(error);
-      }
-    }
-
-    document.querySelectorAll("[data-social-link]").forEach((link) => {
-      link.addEventListener("click", () => {
-        trackEvent("social_link_click", {
-          link_name: link.dataset.socialLink,
-          destination_url: link.href
-        });
-      });
-    });
-
-    initializeAnalytics();
-
-    trackEvent("portfolio_home_view", {
-      page_title: document.title,
-      page_location: window.location.href,
-      page_path: window.location.pathname
-    });
-
-    renderApps();
-  </script>
+  <script src="/assets/site.js" defer></script>
 </body>
 </html>
