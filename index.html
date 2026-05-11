@@ -187,8 +187,8 @@
     <div class="apps" id="apps"></div>
 
     <div class="links">
-      <a href="https://github.com/andredestro" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
+      <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener" data-social-link="linkedin">LinkedIn</a>
     </div>
 
     <div class="footer">
@@ -198,7 +198,61 @@
   </div>
 
   <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDI9wEkZE7wLoTtYZd_n6fr9g8S1vLmP8w",
+      authDomain: "andredestro-github-io.firebaseapp.com",
+      projectId: "andredestro-github-io",
+      storageBucket: "andredestro-github-io.firebasestorage.app",
+      messagingSenderId: "506254720829",
+      appId: "1:506254720829:web:df6f930fa0c1d387a60f54",
+      measurementId: "G-57VRNK7NQQ"
+    };
+
     const appsContainer = document.querySelector("#apps");
+    const pendingAnalyticsEvents = [];
+    let analytics = null;
+    let analyticsReady = false;
+    let logAnalyticsEvent = null;
+
+    function trackEvent(name, params = {}) {
+      if (analytics && logAnalyticsEvent) {
+        logAnalyticsEvent(analytics, name, params);
+        return;
+      }
+
+      if (!analyticsReady) {
+        pendingAnalyticsEvents.push({ name, params });
+      }
+    }
+
+    async function initializeAnalytics() {
+      try {
+        const [firebaseAppModule, firebaseAnalyticsModule] = await Promise.all([
+          import("https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js"),
+          import("https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js")
+        ]);
+
+        const supported = await firebaseAnalyticsModule.isSupported();
+        if (!supported) {
+          analyticsReady = true;
+          pendingAnalyticsEvents.length = 0;
+          return;
+        }
+
+        const firebaseApp = firebaseAppModule.initializeApp(firebaseConfig);
+        analytics = firebaseAnalyticsModule.getAnalytics(firebaseApp);
+        logAnalyticsEvent = firebaseAnalyticsModule.logEvent;
+        analyticsReady = true;
+
+        pendingAnalyticsEvents.splice(0).forEach((event) => {
+          trackEvent(event.name, event.params);
+        });
+      } catch (error) {
+        analyticsReady = true;
+        pendingAnalyticsEvents.length = 0;
+        console.warn("Analytics unavailable.", error);
+      }
+    }
 
     function createAppCard(app) {
       const card = document.createElement("div");
@@ -230,6 +284,13 @@
       button.target = "_blank";
       button.rel = "noopener";
       button.textContent = "Download";
+      button.addEventListener("click", () => {
+        trackEvent("app_download_click", {
+          app_id: app.id,
+          app_name: app.name,
+          destination_url: app.appStoreUrl
+        });
+      });
 
       appInfo.append(title, description);
       cardLeft.append(icon, appInfo);
@@ -247,11 +308,34 @@
 
         const data = await response.json();
         appsContainer.replaceChildren(...data.apps.map(createAppCard));
+        trackEvent("apps_load_success", {
+          app_count: data.apps.length
+        });
       } catch (error) {
         appsContainer.textContent = "Unable to load apps.";
+        trackEvent("apps_load_error", {
+          message: error.message
+        });
         console.error(error);
       }
     }
+
+    document.querySelectorAll("[data-social-link]").forEach((link) => {
+      link.addEventListener("click", () => {
+        trackEvent("social_link_click", {
+          link_name: link.dataset.socialLink,
+          destination_url: link.href
+        });
+      });
+    });
+
+    initializeAnalytics();
+
+    trackEvent("portfolio_home_view", {
+      page_title: document.title,
+      page_location: window.location.href,
+      page_path: window.location.pathname
+    });
 
     renderApps();
   </script>
