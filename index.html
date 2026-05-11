@@ -184,75 +184,7 @@
     <h1>Andre Destro</h1>
     <p class="subtitle">iOS Developer building simple, fast and useful apps for everyday life.</p>
 
-    <div class="apps">
-
-      <div class="card">
-        <div class="card-left">
-          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/89/75/b9897583-45a0-e14b-d5cd-be0e886b85da/AppIcon-0-1x_U007epad-0-1-85-220-0.jpeg/512x512bb.jpg" alt="Sleep Wave icon" />
-          <div class="app-info">
-            <div class="app-title">Sleep Wave</div>
-            <div class="app-desc">Relaxing sounds, white noise and sleep tools</div>
-          </div>
-        </div>
-        <a class="btn" href="https://apps.apple.com/app/sleep-wave-sounds-noise/id6761343537" target="_blank" rel="noopener">Download</a>
-      </div>
-
-      <div class="card">
-        <div class="card-left">
-          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f3/50/40/f35040dd-a6b4-b7ba-29b2-252e3712043b/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="Hydro icon" />
-          <div class="app-info">
-            <div class="app-title">Hydro</div>
-            <div class="app-desc">Simple water tracker with reminders</div>
-          </div>
-        </div>
-        <a class="btn" href="https://apps.apple.com/app/hydro-water-tracker/id6761480955" target="_blank" rel="noopener">Download</a>
-      </div>
-
-      <div class="card">
-        <div class="card-left">
-          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/bb/44/5e/bb445e86-24d2-40bc-b1db-2e65e7c648e7/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="ProteinLog icon" />
-          <div class="app-info">
-            <div class="app-title">ProteinLog</div>
-            <div class="app-desc">Track your daily protein intake easily</div>
-          </div>
-        </div>
-        <a class="btn" href="https://apps.apple.com/app/proteinlog-protein-tracker/id6760777475" target="_blank" rel="noopener">Download</a>
-      </div>
-
-      <div class="card">
-        <div class="card-left">
-          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/57/e5/30/57e53083-2c46-7e8e-7a33-6ee3e06b3efe/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="Vitamin Reminder icon" />
-          <div class="app-info">
-            <div class="app-title">Vitamin Reminder</div>
-            <div class="app-desc">Manage vitamins and supplement routines</div>
-          </div>
-        </div>
-        <a class="btn" href="https://apps.apple.com/app/vitamin-reminder-supptrack/id6760776654" target="_blank" rel="noopener">Download</a>
-      </div>
-
-      <div class="card">
-        <div class="card-left">
-          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bc/e5/f5/bce5f5b8-1aa6-fa2b-89a3-dabb589d6dbf/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="RestForge icon" />
-          <div class="app-info">
-            <div class="app-title">RestForge</div>
-            <div class="app-desc">Rest timer for workouts and training</div>
-          </div>
-        </div>
-        <a class="btn" href="https://apps.apple.com/app/restforge/id6760730251" target="_blank" rel="noopener">Download</a>
-      </div>
-
-      <div class="card">
-        <div class="card-left">
-          <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/69/2f/19/692f1967-2f9d-73db-75a5-9247c2534e2d/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg" alt="ExpiryLog icon" />
-          <div class="app-info">
-            <div class="app-title">ExpiryLog</div>
-            <div class="app-desc">Track expiration dates and avoid waste</div>
-          </div>
-        </div>
-        <a class="btn" href="https://apps.apple.com/app/expirylog/id6760726582" target="_blank" rel="noopener">Download</a>
-      </div>
-
-    </div>
+    <div class="apps" id="apps"></div>
 
     <div class="links">
       <a href="https://github.com/andredestro" target="_blank" rel="noopener">GitHub</a>
@@ -264,5 +196,64 @@
     </div>
 
   </div>
+
+  <script>
+    const appsContainer = document.querySelector("#apps");
+
+    function createAppCard(app) {
+      const card = document.createElement("div");
+      card.className = "card";
+
+      const cardLeft = document.createElement("div");
+      cardLeft.className = "card-left";
+
+      const icon = document.createElement("img");
+      icon.className = "app-icon";
+      icon.src = app.iconUrl;
+      icon.alt = `${app.name} icon`;
+      icon.loading = "lazy";
+
+      const appInfo = document.createElement("div");
+      appInfo.className = "app-info";
+
+      const title = document.createElement("div");
+      title.className = "app-title";
+      title.textContent = app.name;
+
+      const description = document.createElement("div");
+      description.className = "app-desc";
+      description.textContent = app.subtitle;
+
+      const button = document.createElement("a");
+      button.className = "btn";
+      button.href = app.appStoreUrl;
+      button.target = "_blank";
+      button.rel = "noopener";
+      button.textContent = "Download";
+
+      appInfo.append(title, description);
+      cardLeft.append(icon, appInfo);
+      card.append(cardLeft, button);
+
+      return card;
+    }
+
+    async function renderApps() {
+      try {
+        const response = await fetch("./apps.json");
+        if (!response.ok) {
+          throw new Error("Could not load apps.json");
+        }
+
+        const data = await response.json();
+        appsContainer.replaceChildren(...data.apps.map(createAppCard));
+      } catch (error) {
+        appsContainer.textContent = "Unable to load apps.";
+        console.error(error);
+      }
+    }
+
+    renderApps();
+  </script>
 </body>
 </html>
