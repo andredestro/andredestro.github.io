@@ -1,0 +1,93 @@
+name: Sync Privacy Policy
+
+on:
+  workflow_call:
+    inputs:
+      app-name:
+        required: true
+        type: string
+      source-file:
+        required: false
+        type: string
+        default: privacy-policy.html
+      dest-repo:
+        required: false
+        type: string
+        default: andredestro/andredestro.github.io
+      dest-path:
+        required: true
+        type: string
+    secrets:
+      DOCS_REPO_PAT:
+        required: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      APP_NAME: ${{ inputs.app-name }}
+      SOURCE_FILE: ${{ inputs.source-file }}
+      DEST_REPO: ${{ inputs.dest-repo }}
+      DEST_PATH: ${{ inputs.dest-path }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync privacy policy to docs repo
+        env:
+          GH_PAT: ${{ secrets.DOCS_REPO_PAT }}
+        run: |
+          set -euo pipefail
+
+          # Get current file metadata from destination repo
+          RESPONSE=$(curl -fsS \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/$DEST_REPO/contents/$DEST_PATH" || true)
+          FILE_SHA=$(printf '%s' "$RESPONSE" | jq -r '.sha // empty')
+
+          # Compare content with what is already in the destination repo
+          if [ -n "$FILE_SHA" ]; then
+            REMOTE_FILE=$(mktemp)
+            printf '%s' "$RESPONSE" | jq -r '.content' | base64 -d > "$REMOTE_FILE"
+            if cmp -s "$SOURCE_FILE" "$REMOTE_FILE"; then
+              echo "Privacy policy is already up to date. Skipping sync."
+              exit 0
+            fi
+          fi
+
+          # Encode source file as base64
+          CONTENT=$(base64 -w 0 "$SOURCE_FILE")
+
+          # Determine commit message
+          TAG="${GITHUB_REF#refs/tags/}"
+          COMMIT_MSG="chore: sync privacy policy from $APP_NAME $TAG"
+
+          # Build JSON body
+          if [ -n "$FILE_SHA" ]; then
+            BODY=$(jq -nc \
+              --arg message "$COMMIT_MSG" \
+              --arg content "$CONTENT" \
+              --arg sha "$FILE_SHA" \
+              '{message: $message, content: $content, sha: $sha}')
+          else
+            BODY=$(jq -nc \
+              --arg message "$COMMIT_MSG" \
+              --arg content "$CONTENT" \
+              '{message: $message, content: $content}')
+          fi
+
+          # Push to destination repo
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X PUT \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "Content-Type: application/json" \
+            -d "$BODY" \
+            "https://api.github.com/repos/$DEST_REPO/contents/$DEST_PATH")
+
+          echo "GitHub API response: $HTTP_STATUS"
+          if [[ "$HTTP_STATUS" != "200" && "$HTTP_STATUS" != "201" ]]; then
+            echo "Failed to sync file (HTTP $HTTP_STATUS)"
+            exit 1
+          fi
+          echo "Sync complete."
