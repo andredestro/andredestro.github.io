@@ -120,9 +120,6 @@ function createAppCard(app) {
   const card = document.createElement("div");
   card.className = "card";
 
-  const cardLeft = document.createElement("div");
-  cardLeft.className = "card-left";
-
   const icon = document.createElement("img");
   icon.className = "app-icon";
   icon.src = app.iconUrl;
@@ -145,7 +142,7 @@ function createAppCard(app) {
   button.href = appStoreUrl;
   button.target = "_blank";
   button.rel = "noopener";
-  button.textContent = "Download";
+  button.textContent = "Get";
   button.addEventListener("click", () => {
     trackEvent("app_download_click", {
       app_id: app.id,
@@ -156,8 +153,7 @@ function createAppCard(app) {
   });
 
   appInfo.append(title, description);
-  cardLeft.append(icon, appInfo);
-  card.append(cardLeft, button);
+  card.append(icon, appInfo, button);
 
   return card;
 }
