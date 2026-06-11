@@ -1,11 +1,18 @@
 {
   "apps": [
     {
-      "id": "sleep_wave",
-      "name": "Sleep Wave",
-      "subtitle": "Sounds & White Noise",
-      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/89/75/b9897583-45a0-e14b-d5cd-be0e886b85da/AppIcon-0-1x_U007epad-0-1-85-220-0.jpeg/512x512bb.jpg",
-      "appStoreUrl": "https://apps.apple.com/app/sleep-wave-sounds-noise/id6761343537"
+      "id": "routine_quest",
+      "name": "RoutineQuest",
+      "subtitle": "Kids Routines & Rewards",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/25/7b/be/257bbecf-8361-28ec-81ae-b6b83f31514a/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/app/routinequest/id6762150718"
+    },
+    {
+      "id": "supp_track",
+      "name": "SuppTrack",
+      "subtitle": "Vitamin & supplement reminder",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/57/e5/30/57e53083-2c46-7e8e-7a33-6ee3e06b3efe/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/app/vitamin-reminder-supptrack/id6760776654"
     },
     {
       "id": "hydro",
@@ -22,11 +29,18 @@
       "appStoreUrl": "https://apps.apple.com/app/proteinlog-protein-tracker/id6760777475"
     },
     {
-      "id": "supp_track",
-      "name": "SuppTrack",
-      "subtitle": "Vitamin & supplement reminder",
-      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/57/e5/30/57e53083-2c46-7e8e-7a33-6ee3e06b3efe/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg",
-      "appStoreUrl": "https://apps.apple.com/app/vitamin-reminder-supptrack/id6760776654"
+      "id": "novumi",
+      "name": "Novumi: Countdowns",
+      "subtitle": "Track life's big moments",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5b/11/45/5b114539-7943-9529-ae5f-ace587108f6d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/app/novumi-countdowns/id6764404814"
+    },
+    {
+      "id": "sleep_wave",
+      "name": "Sleep Wave",
+      "subtitle": "Sounds & White Noise",
+      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/89/75/b9897583-45a0-e14b-d5cd-be0e886b85da/AppIcon-0-1x_U007epad-0-1-85-220-0.jpeg/512x512bb.jpg",
+      "appStoreUrl": "https://apps.apple.com/app/sleep-wave-sounds-noise/id6761343537"
     },
     {
       "id": "rest_forge",
@@ -41,13 +55,6 @@
       "subtitle": "Track expiration dates",
       "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/69/2f/19/692f1967-2f9d-73db-75a5-9247c2534e2d/AppIcon-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg",
       "appStoreUrl": "https://apps.apple.com/app/expirylog/id6760726582"
-    },
-    {
-      "id": "novumi",
-      "name": "Novumi: Countdowns",
-      "subtitle": "Track life's big moments",
-      "iconUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5b/11/45/5b114539-7943-9529-ae5f-ace587108f6d/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
-      "appStoreUrl": "https://apps.apple.com/app/novumi-countdowns/id6764404814"
     }
   ]
 }
