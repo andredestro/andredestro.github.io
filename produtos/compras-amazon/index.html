@@ -3,53 +3,62 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Meu setup — Andre Destro</title>
+  <title>Produtos que comprei na Amazon — Andre Destro</title>
 
-  <link rel="canonical" href="https://andredestro.github.io/setup/" />
+  <link rel="canonical" href="https://andredestro.github.io/produtos/compras-amazon/" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
   <link rel="stylesheet" href="/assets/site.css" />
 
-  <meta name="description" content="Os equipamentos que fazem parte do setup de programação de Andre Destro, com links para Espanha e Brasil." />
+  <meta name="description" content="Produtos mostrados no vídeo de compras da Amazon, com links para Espanha e Brasil." />
   <meta name="author" content="Andre Destro" />
 
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://andredestro.github.io/setup/" />
-  <meta property="og:title" content="Meu setup — Andre Destro" />
-  <meta property="og:description" content="Equipamentos e acessórios que fazem parte do meu setup de programação." />
+  <meta property="og:url" content="https://andredestro.github.io/produtos/compras-amazon/" />
+  <meta property="og:title" content="Produtos que comprei na Amazon" />
+  <meta property="og:description" content="Todos os produtos do vídeo, com opções de compra para Espanha e Brasil." />
   <meta property="og:image" content="https://andredestro.github.io/og-image.png" />
 
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
 </head>
 
-<body>
+<body data-video-slug="compras-amazon">
   <div class="container setup-container">
     <main>
-      <header class="setup-header">
+      <header class="setup-header video-header">
         <a class="back-link" href="/" aria-label="Voltar para a página inicial">← Andre Destro</a>
-        <div class="setup-hero-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none">
-            <rect x="7" y="8" width="34" height="24" rx="4" />
-            <path d="M18 40h12M24 32v8M5 40h38" />
-          </svg>
-        </div>
-        <h1>Meu setup</h1>
-        <p class="subtitle">Equipamentos e acessórios que fazem parte da minha rotina de programação.</p>
+        <p class="video-eyebrow">Produtos do vídeo</p>
+        <h1 id="video-title">Produtos que comprei na Amazon</h1>
+        <p class="subtitle" id="video-description">Todos os produtos mostrados no vídeo, com opções de compra para Espanha e Brasil.</p>
       </header>
 
-      <div id="setup-products" aria-live="polite"></div>
+      <div class="products-grid video-products" id="video-products" aria-live="polite"></div>
+
+      <a class="setup-cta" href="/setup/">
+        <span class="setup-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="13" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+        </span>
+        <span>
+          <strong>Meu setup de programação</strong>
+          <small>Monitor, teclado, mouse, dock, áudio e iluminação</small>
+        </span>
+        <span class="setup-cta-arrow" aria-hidden="true">›</span>
+      </a>
 
       <p class="affiliate-note">
-        Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços e disponibilidade podem mudar.
+        Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços, vendedores e disponibilidade podem mudar.
       </p>
     </main>
 
     <footer class="footer">
       <nav class="links" aria-label="Links do rodapé">
         <a href="/">Início</a>
+        <a href="/setup/">Meu setup</a>
         <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
-        <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener" data-social-link="linkedin">LinkedIn</a>
         <a href="/privacy/">Privacidade e cookies</a>
         <button class="link-button" type="button" id="cookie-settings">Configurar cookies</button>
       </nav>
@@ -70,6 +79,6 @@
 
   <script src="/assets/site.js" defer></script>
   <script src="/assets/product-ui.js" defer></script>
-  <script src="./setup.js" defer></script>
+  <script src="/produtos/video.js" defer></script>
 </body>
 </html>

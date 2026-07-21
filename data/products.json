@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "id": "xiaomi-g34wqi",
+      "name": "XIAOMI Curved Gaming Monitor G34WQi",
+      "icon": "monitor",
+      "links": {
+        "amazonEs": "https://amzn.to/3ROSiN4",
+        "amazonBr": "https://link.amazon/B01GoeoCT",
+        "mercadoLivre": "https://meli.la/1cibzgP"
+      }
+    },
+    {
+      "id": "ugreen-revodok-pro",
+      "name": "UGREEN Revodok Pro Docking Station",
+      "icon": "dock",
+      "links": {
+        "amazonEs": "https://amzn.to/4bzr8jW",
+        "amazonBr": "https://link.amazon/B09mYuhUN",
+        "mercadoLivre": "https://meli.la/1ZvAd5S"
+      }
+    },
+    {
+      "id": "xiaomi-monitor-light-bar",
+      "name": "Xiaomi Barra de luz para monitor",
+      "icon": "light",
+      "links": {
+        "amazonEs": "https://amzn.to/4yuTVzY",
+        "amazonBr": "https://link.amazon/B0bDCGojo",
+        "mercadoLivre": "https://meli.la/228ijfj"
+      }
+    },
+    {
+      "id": "keychron-k3",
+      "name": "Keychron K3, teclado mecânico",
+      "icon": "keyboard",
+      "links": {
+        "amazonEs": "https://amzn.to/4b2hZ3f",
+        "amazonBr": "https://link.amazon/B00gSUBeJ",
+        "mercadoLivre": "https://meli.la/1F5fjfG"
+      }
+    },
+    {
+      "id": "logitech-mx-master-3s",
+      "name": "Logitech MX Master 3S",
+      "icon": "mouse",
+      "links": {
+        "amazonEs": "https://amzn.to/4gOovOT",
+        "amazonBr": "https://link.amazon/B0dCNTBvp",
+        "mercadoLivre": "https://meli.la/1bRmf3q"
+      }
+    },
+    {
+      "id": "sony-wh-1000xm5",
+      "name": "Sony WH-1000XM5",
+      "icon": "headphones",
+      "links": {
+        "amazonEs": "https://amzn.to/4gL5oVT",
+        "amazonBr": "https://link.amazon/B07OjRee4",
+        "mercadoLivre": "https://meli.la/2nfUvE2"
+      }
+    },
+    {
+      "id": "ugreen-zapix-2-in-1",
+      "name": "UGREEN Zapix 2 em 1 Carregador sem fios iPhone MagSafe",
+      "icon": "charger",
+      "links": {
+        "amazonEs": "https://amzn.to/4hoAIdd"
+      }
+    },
+    {
+      "id": "petlibro-rfid-feeder",
+      "name": "PETLIBRO — Alimentador automático RFID para gatos",
+      "icon": "pet-feeder",
+      "links": {
+        "amazonEs": "https://amzn.to/4hoCqeC",
+        "amazonBr": "https://link.amazon/B0jdhyDaP",
+        "mercadoLivre": "https://meli.la/2BAb3Cp"
+      }
+    },
+    {
+      "id": "petlibro-wireless-fountain",
+      "name": "PETLIBRO — Fonte de água sem fio para gatos",
+      "icon": "fountain",
+      "links": {
+        "amazonEs": "https://amzn.to/44GNRXz",
+        "mercadoLivre": "https://meli.la/2v5Y3fn"
+      }
+    },
+    {
+      "id": "sonoff-matter-switch",
+      "name": "SONOFF Matter — Interruptor Wi-Fi inteligente",
+      "icon": "switch",
+      "links": {
+        "amazonEs": "https://amzn.to/4bTVMVj",
+        "amazonBr": "https://link.amazon/B069JSzAG",
+        "mercadoLivre": "https://meli.la/1xoWWrC"
+      }
+    },
+    {
+      "id": "usb-cooling-fan",
+      "name": "Ventilador de refrigeração USB",
+      "icon": "fan",
+      "links": {
+        "amazonEs": "https://amzn.to/4bVkvZo",
+        "amazonBr": "https://link.amazon/B05hutoQy"
+      }
+    },
+    {
+      "id": "philips-nt5650",
+      "name": "Philips Series 5000 NT5650/16 — Aparador",
+      "icon": "trimmer",
+      "links": {
+        "amazonEs": "https://amzn.to/4whbrX9",
+        "amazonBr": "https://link.amazon/B08iRRsqP",
+        "mercadoLivre": "https://meli.la/1qE3HNT"
+      }
+    },
+    {
+      "id": "tp-link-tl-sg105",
+      "name": "TP-Link TL-SG105 — Switch gigabit de 5 portas",
+      "icon": "ethernet",
+      "links": {
+        "amazonEs": "https://amzn.to/4fbaBVM",
+        "amazonBr": "https://link.amazon/B0iVk4oaU",
+        "mercadoLivre": "https://meli.la/2J126jc"
+      }
+    },
+    {
+      "id": "ethernet-cat7-03m",
+      "name": "Cabo Ethernet RJ45 Cat 7 — 0,3 m",
+      "icon": "cable",
+      "links": {
+        "amazonEs": "https://amzn.to/3RjEES3"
+      }
+    },
+    {
+      "id": "fire-tv-stick-4k-plus",
+      "name": "Amazon Fire TV Stick 4K Plus",
+      "icon": "tv",
+      "links": {
+        "amazonEs": "https://amzn.to/4gKlyPh",
+        "amazonBr": "https://link.amazon/B0aVDNryP",
+        "mercadoLivre": "https://meli.la/31WT4Tz"
+      }
+    }
+  ]
+}

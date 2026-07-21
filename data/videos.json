@@ -1,0 +1,18 @@
+{
+  "videos": {
+    "compras-amazon": {
+      "title": "Produtos que comprei na Amazon",
+      "description": "Todos os produtos mostrados no vídeo, com opções de compra para Portugal/Espanha e Brasil.",
+      "products": [
+        "petlibro-rfid-feeder",
+        "petlibro-wireless-fountain",
+        "sonoff-matter-switch",
+        "usb-cooling-fan",
+        "philips-nt5650",
+        "tp-link-tl-sg105",
+        "ethernet-cat7-03m",
+        "fire-tv-stick-4k-plus"
+      ]
+    }
+  }
+}

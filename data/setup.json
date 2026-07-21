@@ -1,0 +1,26 @@
+{
+  "sections": [
+    {
+      "title": "Computador e monitor",
+      "products": [
+        "xiaomi-g34wqi",
+        "ugreen-revodok-pro",
+        "xiaomi-monitor-light-bar"
+      ]
+    },
+    {
+      "title": "Teclado e mouse",
+      "products": [
+        "keychron-k3",
+        "logitech-mx-master-3s"
+      ]
+    },
+    {
+      "title": "Áudio e energia",
+      "products": [
+        "sony-wh-1000xm5",
+        "ugreen-zapix-2-in-1"
+      ]
+    }
+  ]
+}
