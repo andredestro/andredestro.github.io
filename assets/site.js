@@ -192,22 +192,26 @@ document.querySelectorAll("[data-social-link]").forEach((link) => {
   });
 });
 
-acceptAnalyticsButton.addEventListener("click", () => {
+acceptAnalyticsButton?.addEventListener("click", () => {
   setAnalyticsConsent("granted");
 });
 
-declineAnalyticsButton.addEventListener("click", () => {
+declineAnalyticsButton?.addEventListener("click", () => {
   setAnalyticsConsent("denied");
 });
 
-cookieSettingsButton.addEventListener("click", () => {
+cookieSettingsButton?.addEventListener("click", () => {
   showCookieBanner();
 });
 
-if (analyticsConsent() === "granted") {
-  initializeAnalytics();
-} else if (analyticsConsent() !== "denied") {
-  showCookieBanner();
+if (cookieBanner) {
+  if (analyticsConsent() === "granted") {
+    initializeAnalytics();
+  } else if (analyticsConsent() !== "denied") {
+    showCookieBanner();
+  }
 }
 
-renderApps();
+if (appsContainer) {
+  renderApps();
+}

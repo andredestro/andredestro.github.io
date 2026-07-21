@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu setup — Andre Destro</title>
+
+  <link rel="canonical" href="https://andredestro.github.io/setup/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <meta name="description" content="Os equipamentos que fazem parte do setup de programação de Andre Destro, com links para Espanha e Brasil." />
+  <meta name="author" content="Andre Destro" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andredestro.github.io/setup/" />
+  <meta property="og:title" content="Meu setup — Andre Destro" />
+  <meta property="og:description" content="Equipamentos e acessórios que fazem parte do meu setup de programação." />
+  <meta property="og:image" content="https://andredestro.github.io/og-image.png" />
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+</head>
+
+<body>
+  <div class="container setup-container">
+    <main>
+      <header class="setup-header">
+        <a class="back-link" href="/" aria-label="Voltar para a página inicial">← Andre Destro</a>
+        <div class="setup-hero-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <rect x="7" y="8" width="34" height="24" rx="4" />
+            <path d="M18 40h12M24 32v8M5 40h38" />
+          </svg>
+        </div>
+        <h1>Meu setup</h1>
+        <p class="subtitle">Equipamentos e acessórios que fazem parte da minha rotina de programação.</p>
+      </header>
+
+      <div id="setup-products" aria-live="polite"></div>
+
+      <p class="affiliate-note">
+        Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços e disponibilidade podem mudar.
+      </p>
+    </main>
+
+    <footer class="footer">
+      <nav class="links" aria-label="Links do rodapé">
+        <a href="/">Início</a>
+        <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
+        <a href="https://www.linkedin.com/in/andredestro" target="_blank" rel="noopener" data-social-link="linkedin">LinkedIn</a>
+        <a href="/privacy/">Privacidade e cookies</a>
+        <button class="link-button" type="button" id="cookie-settings">Configurar cookies</button>
+      </nav>
+      <div>© 2026 Andre Destro</div>
+    </footer>
+  </div>
+
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <div>
+      <p class="cookie-title">Cookies e privacidade</p>
+      <p class="cookie-copy">Uso dados anônimos para entender quais produtos despertam mais interesse.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="secondary-btn" type="button" id="decline-analytics">Recusar</button>
+      <button class="primary-btn" type="button" id="accept-analytics">Aceitar</button>
+    </div>
+  </div>
+
+  <script src="/assets/site.js" defer></script>
+  <script src="./setup.js" defer></script>
+</body>
+</html>

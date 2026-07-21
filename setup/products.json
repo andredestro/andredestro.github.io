@@ -1,0 +1,68 @@
+{
+  "sections": [
+    {
+      "title": "Computador e monitor",
+      "products": [
+        { "name": "XIAOMI Curved Gaming Monitor G34WQi", "links":
+          {
+            "amazonEs": "https://amzn.to/3ROSiN4",
+            "amazonBr": "https://link.amazon/B01GoeoCT",
+            "mercadoLivre": "https://meli.la/1cibzgP"
+          }
+        },
+        { "name": "UGREEN Revodok Pro Docking Station", "links":
+          {
+            "amazonEs": "https://amzn.to/4bzr8jW",
+            "amazonBr": "https://link.amazon/B09mYuhUN",
+            "mercadoLivre": "https://meli.la/1ZvAd5S"
+          }
+        },
+        { "name": "Xiaomi Barra de luz para monitor", "links":
+          {
+            "amazonEs": "https://amzn.to/4yuTVzY",
+            "amazonBr": "https://link.amazon/B0bDCGojo",
+            "mercadoLivre": "https://meli.la/228ijfj"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Teclado e mouse",
+      "products": [
+        { "name": "Keychron K3, teclado mecânico", "links":
+          {
+            "amazonEs": "https://amzn.to/4b2hZ3f",
+            "amazonBr": "https://link.amazon/B00gSUBeJ",
+            "mercadoLivre": "https://meli.la/1F5fjfG"
+          }
+        },
+        { "name": "Logitech MX Master 3S", "links":
+          {
+            "amazonEs": "https://amzn.to/4gOovOT",
+            "amazonBr": "https://link.amazon/B0dCNTBvp",
+            "mercadoLivre": "https://meli.la/1bRmf3q"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Áudio e energia",
+      "products": [
+        { "name": "Sony WH-1000XM5", "links":
+          {
+            "amazonEs": "https://amzn.to/4gL5oVT",
+            "amazonBr": "https://link.amazon/B07OjRee4",
+            "mercadoLivre": "https://meli.la/2nfUvE2"
+          }
+        },
+        { "name": "UGREEN Zapix 2 em 1 Carregador sem fios iPhone Magsafe", "links":
+          {
+            "amazonEs": "https://amzn.to/4hoAIdd",
+            "amazonBr": "",
+            "mercadoLivre": ""
+          }
+        }
+      ]
+    }
+  ]
+}
