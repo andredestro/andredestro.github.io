@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- Gerado por scripts/generate-video-pages.mjs a partir de data/videos.json — não edite à mão. -->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}} — Andre Destro</title>
+
+  <link rel="canonical" href="{{url}}" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <meta name="description" content="{{description}}" />
+  <meta name="author" content="Andre Destro" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{url}}" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:image" content="https://andredestro.github.io/og-image.png" />
+
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+</head>
+
+<body data-video-slug="{{slug}}">
+  <div class="container setup-container">
+    <main>
+      <header class="setup-header video-header">
+        <a class="back-link" href="/" aria-label="Voltar para a página inicial">← Andre Destro</a>
+        <p class="video-eyebrow">Produtos do vídeo</p>
+        <h1 id="video-title">{{title}}</h1>
+        <p class="subtitle" id="video-description">{{description}}</p>
+      </header>
+
+      <div class="products-grid video-products" id="video-products" aria-live="polite"></div>
+
+      <a class="setup-cta" href="/setup/">
+        <span class="setup-cta-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="13" rx="2" />
+            <path d="M8 21h8M12 17v4" />
+          </svg>
+        </span>
+        <span>
+          <strong>Meu setup de programação</strong>
+          <small>Monitor, teclado, mouse, dock, áudio e iluminação</small>
+        </span>
+        <span class="setup-cta-arrow" aria-hidden="true">›</span>
+      </a>
+
+      <p class="affiliate-note">
+        Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços, vendedores e disponibilidade podem mudar.
+      </p>
+    </main>
+
+    <footer class="footer">
+      <nav class="links" aria-label="Links do rodapé">
+        <a href="/">Início</a>
+        <a href="/setup/">Meu setup</a>
+        <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
+        <a href="/privacy/">Privacidade e cookies</a>
+        <button class="link-button" type="button" id="cookie-settings">Configurar cookies</button>
+      </nav>
+      <div>© 2026 Andre Destro</div>
+    </footer>
+  </div>
+
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <div>
+      <p class="cookie-title">Cookies e privacidade</p>
+      <p class="cookie-copy">Uso dados anônimos para entender quais produtos despertam mais interesse.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="secondary-btn" type="button" id="decline-analytics">Recusar</button>
+      <button class="primary-btn" type="button" id="accept-analytics">Aceitar</button>
+    </div>
+  </div>
+
+  <script src="/assets/analytics.js" defer></script>
+  <script src="/assets/product-ui.js" defer></script>
+  <script src="/produtos/video.js" defer></script>
+</body>
+</html>
