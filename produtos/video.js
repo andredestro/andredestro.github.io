@@ -37,4 +37,11 @@ async function renderVideoProducts() {
   }
 }
 
+document.querySelector(".setup-cta")?.addEventListener("click", () => {
+  SiteAnalytics.trackEvent("setup_cta_click", {
+    video_slug: videoSlug,
+    page_path: window.location.pathname
+  });
+});
+
 renderVideoProducts();

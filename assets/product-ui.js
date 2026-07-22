@@ -32,14 +32,22 @@ const ProductUI = (() => {
     return icon;
   }
 
-  function createStoreLink(store, url, productName) {
+  function createStoreLink(store, url, product) {
     const link = document.createElement("a");
     link.className = "store-link";
     link.href = url;
     link.target = "_blank";
     link.rel = "noopener sponsored";
     link.textContent = storeNames[store] ?? store;
-    link.setAttribute("aria-label", `${storeNames[store] ?? store}: ${productName}`);
+    link.setAttribute("aria-label", `${storeNames[store] ?? store}: ${product.name}`);
+    link.addEventListener("click", () => {
+      SiteAnalytics.trackEvent("product_link_click", {
+        product_id: product.id,
+        product_name: product.name,
+        store,
+        page_path: window.location.pathname
+      });
+    });
     return link;
   }
 
@@ -61,7 +69,7 @@ const ProductUI = (() => {
     const linksContainer = document.createElement("div");
     linksContainer.className = "store-links";
     const links = Object.entries(product.links ?? {}).filter(([, url]) => url);
-    linksContainer.append(...links.map(([store, url]) => createStoreLink(store, url, product.name)));
+    linksContainer.append(...links.map(([store, url]) => createStoreLink(store, url, product)));
 
     content.append(name, linksContainer);
     card.append(createIcon(product.icon), content);

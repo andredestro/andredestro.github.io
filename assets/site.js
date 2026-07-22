@@ -1,111 +1,6 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyDI9wEkZE7wLoTtYZd_n6fr9g8S1vLmP8w",
-  authDomain: "andredestro-github-io.firebaseapp.com",
-  projectId: "andredestro-github-io",
-  storageBucket: "andredestro-github-io.firebasestorage.app",
-  messagingSenderId: "506254720829",
-  appId: "1:506254720829:web:df6f930fa0c1d387a60f54",
-  measurementId: "G-57VRNK7NQQ"
-};
-
-const analyticsConsentKey = "andre_destro_analytics_consent";
 const appStoreProviderToken = "75035800";
 const appStoreCampaignToken = "github_io";
 const appsContainer = document.querySelector("#apps");
-const cookieBanner = document.querySelector("#cookie-banner");
-const acceptAnalyticsButton = document.querySelector("#accept-analytics");
-const declineAnalyticsButton = document.querySelector("#decline-analytics");
-const cookieSettingsButton = document.querySelector("#cookie-settings");
-
-let analytics = null;
-let analyticsReady = false;
-let logAnalyticsEvent = null;
-let renderedAppCount = null;
-
-function analyticsConsent() {
-  try {
-    return localStorage.getItem(analyticsConsentKey);
-  } catch {
-    return "denied";
-  }
-}
-
-function showCookieBanner() {
-  cookieBanner.hidden = false;
-}
-
-function hideCookieBanner() {
-  cookieBanner.hidden = true;
-}
-
-function setAnalyticsConsent(value) {
-  try {
-    localStorage.setItem(analyticsConsentKey, value);
-  } catch {
-    if (value !== "granted") {
-      hideCookieBanner();
-      return;
-    }
-  }
-
-  hideCookieBanner();
-
-  if (value === "granted") {
-    initializeAnalytics();
-  } else {
-    analytics = null;
-    logAnalyticsEvent = null;
-    analyticsReady = false;
-  }
-}
-
-function trackEvent(name, params = {}) {
-  if (analytics && logAnalyticsEvent) {
-    logAnalyticsEvent(analytics, name, params);
-  }
-}
-
-function trackInitialAnalyticsEvents() {
-  trackEvent("portfolio_home_view", {
-    page_title: document.title,
-    page_location: window.location.href,
-    page_path: window.location.pathname
-  });
-
-  if (renderedAppCount !== null) {
-    trackEvent("apps_load_success", {
-      app_count: renderedAppCount
-    });
-  }
-}
-
-async function initializeAnalytics() {
-  if (analyticsReady || analyticsConsent() !== "granted") {
-    return;
-  }
-
-  try {
-    const [firebaseAppModule, firebaseAnalyticsModule] = await Promise.all([
-      import("https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js"),
-      import("https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js")
-    ]);
-
-    const supported = await firebaseAnalyticsModule.isSupported();
-    if (!supported) {
-      analyticsReady = true;
-      return;
-    }
-
-    const firebaseApp = firebaseAppModule.initializeApp(firebaseConfig);
-    analytics = firebaseAnalyticsModule.getAnalytics(firebaseApp);
-    logAnalyticsEvent = firebaseAnalyticsModule.logEvent;
-    analyticsReady = true;
-    trackInitialAnalyticsEvents();
-  } catch (error) {
-    analyticsReady = true;
-    console.warn("Analytics unavailable.", error);
-  }
-}
 
 function appStoreCampaignUrl(urlString) {
   const url = new URL(urlString);
@@ -144,7 +39,7 @@ function createAppCard(app) {
   button.rel = "noopener";
   button.textContent = "Get";
   button.addEventListener("click", () => {
-    trackEvent("app_download_click", {
+    SiteAnalytics.trackEvent("app_download_click", {
       app_id: app.id,
       app_name: app.name,
       campaign_token: appStoreCampaignToken,
@@ -166,49 +61,16 @@ async function renderApps() {
     }
 
     const data = await response.json();
-    renderedAppCount = data.apps.length;
     appsContainer.replaceChildren(...data.apps.map(createAppCard));
-
-    if (analyticsReady) {
-      trackEvent("apps_load_success", {
-        app_count: renderedAppCount
-      });
-    }
+    SiteAnalytics.trackEvent("apps_load_success", {
+      app_count: data.apps.length
+    });
   } catch (error) {
     appsContainer.textContent = "Unable to load apps.";
-    trackEvent("apps_load_error", {
+    SiteAnalytics.trackEvent("apps_load_error", {
       message: error.message
     });
     console.error(error);
-  }
-}
-
-document.querySelectorAll("[data-social-link]").forEach((link) => {
-  link.addEventListener("click", () => {
-    trackEvent("social_link_click", {
-      link_name: link.dataset.socialLink,
-      destination_url: link.href
-    });
-  });
-});
-
-acceptAnalyticsButton?.addEventListener("click", () => {
-  setAnalyticsConsent("granted");
-});
-
-declineAnalyticsButton?.addEventListener("click", () => {
-  setAnalyticsConsent("denied");
-});
-
-cookieSettingsButton?.addEventListener("click", () => {
-  showCookieBanner();
-});
-
-if (cookieBanner) {
-  if (analyticsConsent() === "granted") {
-    initializeAnalytics();
-  } else if (analyticsConsent() !== "denied") {
-    showCookieBanner();
   }
 }
 
