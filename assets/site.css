@@ -671,7 +671,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
 .home-hero h1 { background: none; -webkit-text-fill-color: currentColor; font-size: clamp(42px, 6.5vw, 72px); line-height: 1.07; letter-spacing: -.055em; font-weight: 650; margin-bottom: 24px; }
 .home-hero h1 span { color: var(--text-secondary); }
 .home-hero .subtitle { margin: 0; max-width: 640px; font-size: 18px; line-height: 1.65; }
-.hub-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; }
+.hub-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .hub-card { position: relative; min-height: 220px; padding: 28px; border-radius: 24px; border: 1px solid var(--border); background: var(--surface); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; color: var(--text); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
 .hub-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
 .youtube-card { background: #f9efeb; }
@@ -730,3 +730,5 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   .catalog-page .apps { grid-template-columns: 1fr; }
   .catalog-page .card { padding: 24px; }
 }
+
+.home-page .site-nav { justify-content: flex-end; }
