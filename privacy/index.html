@@ -11,8 +11,11 @@
   <meta name="description" content="Privacy and cookies information for andredestro.github.io." />
 </head>
 <body>
+<nav class="site-nav" aria-label="Main navigation"><a class="wordmark" href="/">André Destro<span class="brand-dot">.</span></a><div><a href="/apps/">Apps</a><a href="/setup/">Setup</a><a href="https://www.youtube.com/@afdestro" data-social-link="youtube">YouTube ↗</a></div></nav>
+<div class="container prose">
+<main>
   <h1>Privacy &amp; Cookies</h1>
-  <p><strong>Last updated:</strong> July 22, 2026</p>
+  <p><strong>Last updated:</strong> September 17, 2026</p>
 
   <p>
     This page explains how the website <strong>andredestro.github.io</strong> handles privacy and analytics.
@@ -22,7 +25,7 @@
   <h2>Information Collected on This Website</h2>
   <p>
     This website may use Firebase Analytics, provided by Google, if you accept analytics cookies.
-    Analytics helps understand site visits, app download clicks, product link clicks, social link clicks, and whether the app catalog loads correctly.
+    Analytics helps understand site visits, app download clicks, product link clicks, social link clicks, and whether app and product catalogs load correctly.
   </p>
   <p>
     The website does not ask you to create an account and does not intentionally collect your name, email address, phone number, payment information, or precise location.
@@ -32,17 +35,20 @@
   <p>When analytics is enabled, events may include:</p>
   <ul>
     <li>Page views, recorded automatically by Firebase Analytics</li>
-    <li>Successful or failed loading of the app catalog</li>
+    <li>Successful or failed loading of app and product catalogs</li>
     <li>Clicks on App Store download links</li>
     <li>Clicks on product store links on the setup and product pages (product name and store)</li>
     <li>Clicks on the setup page link on product pages</li>
-    <li>Clicks on GitHub and LinkedIn links</li>
+    <li>Clicks on YouTube, GitHub and LinkedIn links, including whether they came from a card, header or footer</li>
+    <li>Navigation between site pages and clicks on the email contact link (without sending the email address)</li>
   </ul>
 
   <h2>Cookies and Local Storage</h2>
   <p>
     Analytics cookies are only loaded after you accept analytics on the cookie banner.
     Your choice is stored in your browser's local storage so the site can remember it.
+    Declining stops further collection; it does not delete data already sent to Google.
+    Advertising storage, advertising personalization and Google signals are disabled.
   </p>
   <p>
     You can change your choice at any time using the "Cookie Settings" link in the footer of any page.
@@ -69,6 +75,36 @@
     <a href="mailto:support.myapps@gmail.com">support.myapps@gmail.com</a>.
   </p>
 
-  <p><a href="/">Back to home</a></p>
+</main>
+<footer class="footer" lang="en">
+      <nav class="links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/setup/">Setup</a>
+        <a href="https://www.youtube.com/@afdestro" data-social-link="youtube">YouTube</a>
+        <a href="https://github.com/andredestro" data-social-link="github">GitHub</a>
+        <a href="https://www.linkedin.com/in/andredestro" data-social-link="linkedin">LinkedIn</a>
+        <a href="/privacy/">Privacy &amp; Cookies</a>
+        <button class="link-button" type="button" id="cookie-settings">Cookie Settings</button>
+      </nav>
+      <div>© 2026 André Destro</div>
+    </footer>
+</div>
+  <div class="cookie-banner" id="cookie-banner" lang="en" hidden>
+    <div>
+      <p class="cookie-title">Cookies &amp; privacy</p>
+      <p class="cookie-copy">
+        With your permission, I use analytics to understand visits and clicks on this website.
+      </p>
+    </div>
+    <div class="cookie-actions">
+      <button class="secondary-btn" type="button" id="decline-analytics">Decline</button>
+      <button class="primary-btn" type="button" id="accept-analytics">Accept</button>
+    </div>
+  </div>
+
+
+
+  <script src="/assets/analytics.js" defer></script>
 </body>
 </html>

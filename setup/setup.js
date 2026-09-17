@@ -32,7 +32,7 @@ async function renderSetup() {
     ]);
 
     if (!productsResponse.ok || !setupResponse.ok) {
-      throw new Error("Não foi possível carregar os produtos.");
+      throw new Error("Could not load products.");
     }
 
     const [productsData, setupData] = await Promise.all([
@@ -44,8 +44,13 @@ async function renderSetup() {
       .map((section) => createSection(section, productsById))
       .filter(Boolean);
     setupContainer.replaceChildren(...sections);
+    SiteAnalytics.trackLoadState("products", "products_load_success", {
+      section_count: sections.length,
+      product_count: setupContainer.querySelectorAll(".product-card").length
+    });
   } catch (error) {
-    setupContainer.textContent = "Não foi possível carregar o setup agora.";
+    setupContainer.textContent = "Unable to load the setup right now.";
+    SiteAnalytics.trackLoadState("products", "products_load_error", { error_code: "setup_load_failed" });
     console.error(error);
   }
 }

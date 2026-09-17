@@ -9,6 +9,18 @@ const SiteAnalytics = (() => {
     measurementId: "G-57VRNK7NQQ"
   };
 
+  // Preview traffic never reaches the production property.
+  const productionHost = window.location.hostname === "andredestro.github.io";
+  const pagePath = window.location.pathname;
+  const pageType = pagePath === "/" ? "home"
+    : pagePath.startsWith("/apps/") ? "apps"
+    : pagePath.startsWith("/setup/") ? "setup"
+    : pagePath.startsWith("/produtos/") ? "video_products" : "privacy";
+  const pageContext = { page_path: pagePath, page_type: pageType };
+  if (document.body.dataset.videoSlug) pageContext.video_slug = document.body.dataset.videoSlug;
+  const loadStates = new Map();
+  let setGoogleConsent = null;
+
   const consentKey = "andre_destro_analytics_consent";
   const cookieBanner = document.querySelector("#cookie-banner");
   const acceptButton = document.querySelector("#accept-analytics");
@@ -25,7 +37,7 @@ const SiteAnalytics = (() => {
 
   function consent() {
     try {
-      return localStorage.getItem(consentKey) ?? memoryConsent;
+      return memoryConsent ?? localStorage.getItem(consentKey);
     } catch {
       return memoryConsent ?? "denied";
     }
@@ -43,15 +55,15 @@ const SiteAnalytics = (() => {
   }
 
   function trackEvent(name, params = {}) {
-    if (unsupported || consent() !== "granted") {
+    if (!productionHost || unsupported || consent() !== "granted") {
       return;
     }
     if (analytics && logAnalyticsEvent) {
-      logAnalyticsEvent(analytics, name, params);
+      logAnalyticsEvent(analytics, name, { ...pageContext, ...params });
     } else {
       // Queued until the Firebase SDK finishes loading, flushed in
       // syncCollectionState so early clicks aren't lost.
-      pendingEvents.push({ name, params });
+      if (pendingEvents.length < 50) pendingEvents.push({ name, params: { ...pageContext, ...params } });
     }
   }
 
@@ -61,6 +73,8 @@ const SiteAnalytics = (() => {
     }
     const granted = consent() === "granted";
     setCollectionEnabled(analytics, granted);
+    setGoogleConsent({ analytics_storage: granted ? "granted" : "denied",
+      ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" });
     if (!granted) {
       pendingEvents.length = 0;
       return;
@@ -72,7 +86,7 @@ const SiteAnalytics = (() => {
   }
 
   async function initializeAnalytics() {
-    if (unsupported || consent() !== "granted") {
+    if (!productionHost || unsupported || consent() !== "granted") {
       return;
     }
     if (analytics) {
@@ -96,8 +110,15 @@ const SiteAnalytics = (() => {
         return;
       }
 
+      // Consent can change while imports or isSupported() are pending.
+      if (consent() !== "granted") return;
+      setGoogleConsent = firebaseAnalyticsModule.setConsent;
+      setGoogleConsent({ analytics_storage: "granted", ad_storage: "denied",
+        ad_user_data: "denied", ad_personalization: "denied" });
       const firebaseApp = firebaseAppModule.initializeApp(firebaseConfig);
-      analytics = firebaseAnalyticsModule.getAnalytics(firebaseApp);
+      analytics = firebaseAnalyticsModule.initializeAnalytics(firebaseApp, {
+        config: { allow_google_signals: false, allow_ad_personalization_signals: false }
+      });
       logAnalyticsEvent = firebaseAnalyticsModule.logEvent;
       setCollectionEnabled = firebaseAnalyticsModule.setAnalyticsCollectionEnabled;
       syncCollectionState();
@@ -110,16 +131,21 @@ const SiteAnalytics = (() => {
   }
 
   function setConsent(value) {
+    const previous = consent();
     storeConsent(value);
     if (cookieBanner) {
       cookieBanner.hidden = true;
     }
     if (value === "granted") {
       initializeAnalytics();
+      // Report the current rendered state, never replay pre-consent clicks.
+      if (previous !== "granted") {
+        for (const state of loadStates.values()) trackEvent(state.name, state.params);
+      }
     } else {
       pendingEvents.length = 0;
       if (analytics) {
-        setCollectionEnabled(analytics, false);
+        syncCollectionState();
       }
     }
   }
@@ -132,13 +158,45 @@ const SiteAnalytics = (() => {
     }
   });
 
-  document.querySelectorAll("[data-social-link]").forEach((link) => {
-    link.addEventListener("click", () => {
+  function trackLoadState(key, name, params = {}) {
+    loadStates.set(key, { name, params });
+    trackEvent(name, params);
+  }
+
+  function linkPlacement(link) {
+    if (link.closest(".site-nav")) return "header";
+    if (link.closest(".footer")) return "footer";
+    if (link.closest(".hub-grid")) return "home_cards";
+    return "content";
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const placement = linkPlacement(link);
+    if (link.dataset.socialLink) {
+      const url = new URL(link.href);
       trackEvent("social_link_click", {
-        link_name: link.dataset.socialLink,
-        destination_url: link.href
+        link_name: link.dataset.socialLink, link_placement: placement,
+        destination_url: url.origin + url.pathname
       });
-    });
+    } else if (link.protocol === "mailto:") {
+      trackEvent("contact_click", { contact_method: "email", link_placement: placement });
+    } else if (link.origin === window.location.origin && !link.matches(".setup-cta")) {
+      trackEvent("navigation_click", { destination_path: link.pathname, link_placement: placement });
+    }
+  });
+
+  // Apply revocation from another tab without waiting for the next page load.
+  window.addEventListener("storage", (event) => {
+    if (event.key !== consentKey && event.key !== null) return;
+    memoryConsent = null;
+    if (consent() === "granted") {
+      initializeAnalytics();
+    } else {
+      pendingEvents.length = 0;
+      if (analytics) syncCollectionState();
+    }
   });
 
   if (cookieBanner) {
@@ -150,5 +208,5 @@ const SiteAnalytics = (() => {
     }
   }
 
-  return { trackEvent };
+  return { trackEvent, trackLoadState };
 })();

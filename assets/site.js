@@ -37,10 +37,12 @@ function createAppCard(app) {
   button.href = appStoreUrl;
   button.target = "_blank";
   button.rel = "noopener";
-  button.textContent = "Get";
+  button.textContent = "App Store ↗";
+  button.setAttribute("aria-label", `Download ${app.name} on the App Store`);
   button.addEventListener("click", () => {
     SiteAnalytics.trackEvent("app_download_click", {
       app_id: app.id,
+      link_placement: "app_catalog",
       app_name: app.name,
       campaign_token: appStoreCampaignToken,
       destination_url: appStoreUrl
@@ -55,20 +57,20 @@ function createAppCard(app) {
 
 async function renderApps() {
   try {
-    const response = await fetch("./apps.json");
+    const response = await fetch("/apps.json");
     if (!response.ok) {
       throw new Error("Could not load apps.json");
     }
 
     const data = await response.json();
     appsContainer.replaceChildren(...data.apps.map(createAppCard));
-    SiteAnalytics.trackEvent("apps_load_success", {
+    SiteAnalytics.trackLoadState("apps", "apps_load_success", {
       app_count: data.apps.length
     });
   } catch (error) {
     appsContainer.textContent = "Unable to load apps.";
-    SiteAnalytics.trackEvent("apps_load_error", {
-      message: error.message
+    SiteAnalytics.trackLoadState("apps", "apps_load_error", {
+      error_code: "catalog_load_failed"
     });
     console.error(error);
   }

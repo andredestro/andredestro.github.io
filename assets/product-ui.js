@@ -43,6 +43,7 @@ const ProductUI = (() => {
     link.addEventListener("click", () => {
       SiteAnalytics.trackEvent("product_link_click", {
         product_id: product.id,
+        link_placement: "product_catalog",
         product_name: product.name,
         store,
         page_path: window.location.pathname

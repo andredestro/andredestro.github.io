@@ -22,7 +22,7 @@
     },
     {
       "id": "xiaomi-monitor-light-bar",
-      "name": "Xiaomi Barra de luz para monitor",
+      "name": "Xiaomi Monitor Light Bar",
       "icon": "light",
       "links": {
         "amazonEs": "https://amzn.to/4yuTVzY",
@@ -32,7 +32,7 @@
     },
     {
       "id": "keychron-k3",
-      "name": "Keychron K3, teclado mecânico",
+      "name": "Keychron K3 Mechanical Keyboard",
       "icon": "keyboard",
       "links": {
         "amazonEs": "https://amzn.to/4b2hZ3f",
@@ -62,7 +62,7 @@
     },
     {
       "id": "ugreen-zapix-2-in-1",
-      "name": "UGREEN Zapix 2 em 1 Carregador sem fios iPhone MagSafe",
+      "name": "UGREEN Zapix 2-in-1 MagSafe Wireless Charger",
       "icon": "charger",
       "links": {
         "amazonEs": "https://amzn.to/4hoAIdd"

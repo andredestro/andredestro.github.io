@@ -31,8 +31,10 @@ async function renderVideoProducts() {
     videoTitle.textContent = video.title;
     videoDescription.textContent = video.description;
     videoProducts.replaceChildren(...products.map(ProductUI.createProductCard));
+    SiteAnalytics.trackLoadState("products", "products_load_success", { product_count: products.length });
   } catch (error) {
     videoProducts.textContent = "Não foi possível carregar os produtos agora.";
+    SiteAnalytics.trackLoadState("products", "products_load_error", { error_code: "video_products_load_failed" });
     console.error(error);
   }
 }
@@ -40,6 +42,7 @@ async function renderVideoProducts() {
 document.querySelector(".setup-cta")?.addEventListener("click", () => {
   SiteAnalytics.trackEvent("setup_cta_click", {
     video_slug: videoSlug,
+    link_placement: "content",
     page_path: window.location.pathname
   });
 });

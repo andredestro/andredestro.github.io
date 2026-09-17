@@ -25,10 +25,10 @@
 </head>
 
 <body data-video-slug="compras-amazon">
+<nav class="site-nav" aria-label="Main navigation"><a class="wordmark" href="/">André Destro<span class="brand-dot">.</span></a><div><a href="/apps/">Apps</a><a href="/setup/">Setup</a><a href="https://www.youtube.com/@afdestro" data-social-link="youtube">YouTube ↗</a></div></nav>
   <div class="container setup-container">
     <main>
       <header class="setup-header video-header">
-        <a class="back-link" href="/" aria-label="Voltar para a página inicial">← Andre Destro</a>
         <p class="video-eyebrow">Produtos do vídeo</p>
         <h1 id="video-title">Produtos que comprei na Amazon</h1>
         <p class="subtitle" id="video-description">Todos os produtos mostrados no vídeo, com opções de compra para Portugal/Espanha e Brasil.</p>
@@ -55,28 +55,35 @@
       </p>
     </main>
 
-    <footer class="footer">
-      <nav class="links" aria-label="Links do rodapé">
-        <a href="/">Início</a>
-        <a href="/setup/">Meu setup</a>
-        <a href="https://github.com/andredestro" target="_blank" rel="noopener" data-social-link="github">GitHub</a>
-        <a href="/privacy/">Privacidade e cookies</a>
-        <button class="link-button" type="button" id="cookie-settings">Configurar cookies</button>
+    <footer class="footer" lang="en">
+      <nav class="links" aria-label="Footer links">
+        <a href="/">Home</a>
+        <a href="/apps/">Apps</a>
+        <a href="/setup/">Setup</a>
+        <a href="https://www.youtube.com/@afdestro" data-social-link="youtube">YouTube</a>
+        <a href="https://github.com/andredestro" data-social-link="github">GitHub</a>
+        <a href="https://www.linkedin.com/in/andredestro" data-social-link="linkedin">LinkedIn</a>
+        <a href="/privacy/">Privacy &amp; Cookies</a>
+        <button class="link-button" type="button" id="cookie-settings">Cookie Settings</button>
       </nav>
-      <div>© 2026 Andre Destro</div>
+      <div>© 2026 André Destro</div>
     </footer>
   </div>
 
-  <div class="cookie-banner" id="cookie-banner" hidden>
+  <div class="cookie-banner" id="cookie-banner" lang="en" hidden>
     <div>
-      <p class="cookie-title">Cookies e privacidade</p>
-      <p class="cookie-copy">Uso dados anônimos para entender quais produtos despertam mais interesse.</p>
+      <p class="cookie-title">Cookies &amp; privacy</p>
+      <p class="cookie-copy">
+        With your permission, I use analytics to understand visits and clicks on this website.
+      </p>
     </div>
     <div class="cookie-actions">
-      <button class="secondary-btn" type="button" id="decline-analytics">Recusar</button>
-      <button class="primary-btn" type="button" id="accept-analytics">Aceitar</button>
+      <button class="secondary-btn" type="button" id="decline-analytics">Decline</button>
+      <button class="primary-btn" type="button" id="accept-analytics">Accept</button>
     </div>
   </div>
+
+
 
   <script src="/assets/analytics.js" defer></script>
   <script src="/assets/product-ui.js" defer></script>

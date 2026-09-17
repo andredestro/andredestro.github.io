@@ -1,7 +1,7 @@
 {
   "sections": [
     {
-      "title": "Computador e monitor",
+      "title": "Computer & display",
       "products": [
         "xiaomi-g34wqi",
         "ugreen-revodok-pro",
@@ -9,14 +9,14 @@
       ]
     },
     {
-      "title": "Teclado e mouse",
+      "title": "Keyboard & mouse",
       "products": [
         "keychron-k3",
         "logitech-mx-master-3s"
       ]
     },
     {
-      "title": "Áudio e energia",
+      "title": "Audio & charging",
       "products": [
         "sony-wh-1000xm5",
         "ugreen-zapix-2-in-1"
