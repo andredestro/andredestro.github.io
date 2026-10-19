@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Gerado por scripts/generate-video-pages.mjs a partir de data/videos.json — não edite à mão. -->
-<html lang="pt-BR">
+<html lang="{{language}}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,7 +29,7 @@
   <div class="container setup-container">
     <main>
       <header class="setup-header video-header">
-        <p class="video-eyebrow">Produtos do vídeo</p>
+        <p class="video-eyebrow">{{eyebrow}}</p>
         <h1 id="video-title">{{title}}</h1>
         <p class="subtitle" id="video-description">{{description}}</p>
       </header>
@@ -44,14 +44,14 @@
           </svg>
         </span>
         <span>
-          <strong>Meu setup de programação</strong>
-          <small>Monitor, teclado, mouse, dock, áudio e iluminação</small>
+          <strong>{{setupTitle}}</strong>
+          <small>{{setupDescription}}</small>
         </span>
         <span class="setup-cta-arrow" aria-hidden="true">›</span>
       </a>
 
       <p class="affiliate-note">
-        Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços, vendedores e disponibilidade podem mudar.
+        {{affiliateNote}}
       </p>
     </main>
 

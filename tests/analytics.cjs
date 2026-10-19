@@ -92,7 +92,7 @@ const key = 'andre_destro_analytics_consent';
       await context.close();
     }
     // Setup and video catalogs have success/failure coverage; CTA is not double-counted.
-    for (const route of ['/setup/', '/produtos/compras-amazon/']) {
+    for (const route of ['/setup/', '/produtos/compras-amazon/', '/produtos/homelab/']) {
       for (const failCatalog of [false, true]) {
         const { page, context } = await fixture({ granted: true, failCatalog });
         await page.goto(origin + route);

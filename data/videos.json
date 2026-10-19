@@ -13,6 +13,52 @@
         "ethernet-cat7-03m",
         "fire-tv-stick-4k-plus"
       ]
+    },
+    "homelab": {
+      "language": "en",
+      "title": "My homelab gear",
+      "description": "Raspberry Pi boards, cases, power supplies, storage and networking gear I use in my homelab, with shopping options for Portugal and Brazil.",
+      "sections": [
+        {
+          "title": "Raspberry Pi",
+          "products": [
+            "raspberry-pi-5-4gb",
+            "raspberry-pi-5-8gb",
+            "raspberry-pi-5-16gb"
+          ]
+        },
+        {
+          "title": "Cases",
+          "products": [
+            "raspberry-pi-5-case-black",
+            "raspberry-pi-5-case-red-white"
+          ]
+        },
+        {
+          "title": "Power supplies",
+          "products": [
+            "raspberry-pi-usb-c-power-supply-27w-black",
+            "raspberry-pi-usb-c-power-supply-27w-white"
+          ]
+        },
+        {
+          "title": "Storage",
+          "products": [
+            "micro-sd-64gb",
+            "micro-sd-128gb",
+            "external-hard-drive-8tb",
+            "external-hard-drive-6tb",
+            "external-hard-drive-4tb"
+          ]
+        },
+        {
+          "title": "Network",
+          "products": [
+            "network-switch-5-port",
+            "network-switch-8-port"
+          ]
+        }
+      ]
     }
   }
 }

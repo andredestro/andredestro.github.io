@@ -20,6 +20,20 @@ const execFileAsync = promisify(execFile);
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const baseUrl = "https://andredestro.github.io";
 const sitemapPath = path.join(root, "sitemap.xml");
+const pageCopy = {
+  en: {
+    eyebrow: "Products from the video",
+    setupTitle: "My programming setup",
+    setupDescription: "Monitor, keyboard, mouse, dock, audio and lighting",
+    affiliateNote: "Some links on this page are affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. Prices, sellers and availability may change."
+  },
+  "pt-BR": {
+    eyebrow: "Produtos do vídeo",
+    setupTitle: "Meu setup de programação",
+    setupDescription: "Monitor, teclado, mouse, dock, áudio e iluminação",
+    affiliateNote: "Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços, vendedores e disponibilidade podem mudar."
+  }
+};
 
 function escapeHtml(text) {
   return text
@@ -94,11 +108,18 @@ for (const slug of slugs) {
 
   console.log(`Vídeo: ${slug}`);
   const pageUrl = `${baseUrl}/produtos/${slug}/`;
+  const language = video.language ?? "pt-BR";
+  const copy = pageCopy[language] ?? pageCopy["pt-BR"];
   const html = template
     .replaceAll("{{slug}}", slug)
     .replaceAll("{{url}}", pageUrl)
+    .replaceAll("{{language}}", language)
     .replaceAll("{{title}}", escapeHtml(video.title))
-    .replaceAll("{{description}}", escapeHtml(video.description));
+    .replaceAll("{{description}}", escapeHtml(video.description))
+    .replaceAll("{{eyebrow}}", escapeHtml(copy.eyebrow))
+    .replaceAll("{{setupTitle}}", escapeHtml(copy.setupTitle))
+    .replaceAll("{{setupDescription}}", escapeHtml(copy.setupDescription))
+    .replaceAll("{{affiliateNote}}", escapeHtml(copy.affiliateNote));
 
   const pageDir = path.join(root, "produtos", slug);
   await mkdir(pageDir, { recursive: true });

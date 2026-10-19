@@ -21,6 +21,10 @@ const ProductUI = (() => {
     ethernet: '<rect x="3" y="6" width="18" height="12" rx="3"/><path d="M7 11h2v3H7zM11 11h2v3h-2zM15 11h2v3h-2z"/>',
     cable: '<path d="M7 4v5a5 5 0 0 0 10 0V6M4 2h6v4H4zM14 2h6v4h-6zM6 6v3"/>',
     tv: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m9 2 3 3 3-3M10 15h4"/>',
+    "raspberry-pi": '<rect x="5" y="5" width="14" height="14" rx="3"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/><circle cx="10" cy="10" r="1.5"/><circle cx="14.5" cy="14.5" r="1.5"/>',
+    case: '<rect x="4" y="3" width="16" height="18" rx="3"/><circle cx="9" cy="8" r="1"/><circle cx="15" cy="8" r="1"/><path d="M8 16h8M9 12h6"/>',
+    "memory-card": '<path d="M7 3h7l4 4v14H6V4a1 1 0 0 1 1-1Z"/><path d="M9 3v5M12 3v5M15 4v4"/>',
+    storage: '<rect x="4" y="3" width="16" height="18" rx="3"/><path d="M4 15h16M8 18h.01M12 18h.01"/><circle cx="12" cy="9" r="3"/>',
     default: '<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/>'
   };
 

@@ -143,6 +143,125 @@
         "amazonBr": "https://link.amazon/B0aVDNryP",
         "mercadoLivre": "https://meli.la/31WT4Tz"
       }
+    },
+    {
+      "id": "raspberry-pi-5-4gb",
+      "name": "Raspberry Pi 5 — 4 GB RAM",
+      "icon": "raspberry-pi",
+      "links": {
+        "amazonEs": "https://link.amazon/B067IVe4v",
+        "amazonBr": "https://link.amazon/B01KID16D",
+        "mercadoLivre": "https://meli.la/165zrxk"
+      }
+    },
+    {
+      "id": "raspberry-pi-5-8gb",
+      "name": "Raspberry Pi 5 — 8 GB RAM",
+      "icon": "raspberry-pi",
+      "links": {
+        "amazonEs": "https://link.amazon/B0bYxhigC",
+        "mercadoLivre": "https://meli.la/2ehWLbu"
+      }
+    },
+    {
+      "id": "raspberry-pi-5-16gb",
+      "name": "Raspberry Pi 5 — 16 GB RAM",
+      "icon": "raspberry-pi",
+      "links": {
+        "amazonEs": "https://link.amazon/B00YuLoan"
+      }
+    },
+    {
+      "id": "raspberry-pi-5-case-black",
+      "name": "Black case for Raspberry Pi 5",
+      "icon": "case",
+      "links": {
+        "amazonEs": "https://link.amazon/B0b3jyIr1",
+        "amazonBr": "https://link.amazon/B08uDu9y6",
+        "mercadoLivre": "https://meli.la/2tt8zo3"
+      }
+    },
+    {
+      "id": "raspberry-pi-5-case-red-white",
+      "name": "Red and white case for Raspberry Pi 5",
+      "icon": "case",
+      "links": {
+        "amazonEs": "https://link.amazon/B0gLYGZam",
+        "amazonBr": "https://link.amazon/B0dcGSbYM"
+      }
+    },
+    {
+      "id": "raspberry-pi-usb-c-power-supply-27w-black",
+      "name": "USB-C 27 W power supply — black",
+      "icon": "charger",
+      "links": {
+        "amazonEs": "https://link.amazon/B0j9Dc0hK",
+        "mercadoLivre": "https://meli.la/33Ct1Tg"
+      }
+    },
+    {
+      "id": "raspberry-pi-usb-c-power-supply-27w-white",
+      "name": "USB-C 27 W power supply — white",
+      "icon": "charger",
+      "links": {
+        "amazonEs": "https://link.amazon/B0icmuy3t"
+      }
+    },
+    {
+      "id": "micro-sd-64gb",
+      "name": "64 GB microSD card",
+      "icon": "memory-card",
+      "links": {
+        "amazonEs": "https://link.amazon/B0iYZP3n5"
+      }
+    },
+    {
+      "id": "micro-sd-128gb",
+      "name": "128 GB microSD card",
+      "icon": "memory-card",
+      "links": {
+        "amazonEs": "https://link.amazon/B0dJIuHrB"
+      }
+    },
+    {
+      "id": "external-hard-drive-8tb",
+      "name": "8 TB external hard drive",
+      "icon": "storage",
+      "links": {
+        "amazonEs": "https://link.amazon/B0hTOVuQT"
+      }
+    },
+    {
+      "id": "external-hard-drive-6tb",
+      "name": "6 TB external hard drive",
+      "icon": "storage",
+      "links": {
+        "amazonEs": "https://link.amazon/B0dTbpUcd"
+      }
+    },
+    {
+      "id": "external-hard-drive-4tb",
+      "name": "4 TB external hard drive",
+      "icon": "storage",
+      "links": {
+        "amazonEs": "https://link.amazon/B04ZfkJIM"
+      }
+    },
+    {
+      "id": "network-switch-5-port",
+      "name": "5-port network switch",
+      "icon": "ethernet",
+      "links": {
+        "amazonEs": "https://link.amazon/A02zPnr4U"
+      }
+    },
+    {
+      "id": "network-switch-8-port",
+      "name": "8-port network switch",
+      "icon": "ethernet",
+      "links": {
+        "amazonEs": "https://link.amazon/B0fmGSFna"
+      }
     }
   ]
 }
