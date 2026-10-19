@@ -36,7 +36,7 @@ async function renderVideoProducts() {
     ]);
 
     if (!productsResponse.ok || !videosResponse.ok) {
-      throw new Error("Não foi possível carregar os produtos.");
+      throw new Error("Could not load the products.");
     }
 
     const [productsData, videosData] = await Promise.all([
@@ -45,7 +45,7 @@ async function renderVideoProducts() {
     ]);
     const video = videosData.videos[videoSlug];
     if (!video) {
-      throw new Error(`Vídeo não encontrado: ${videoSlug}`);
+      throw new Error(`Video not found: ${videoSlug}`);
     }
 
     const productsById = ProductUI.indexProducts(productsData.products);
@@ -67,7 +67,7 @@ async function renderVideoProducts() {
       product_count: videoProducts.querySelectorAll(".product-card").length
     });
   } catch (error) {
-    videoProducts.textContent = "Não foi possível carregar os produtos agora.";
+    videoProducts.textContent = "Unable to load the products right now.";
     SiteAnalytics.trackLoadState("products", "products_load_error", { error_code: "video_products_load_failed" });
     console.error(error);
   }

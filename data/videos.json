@@ -1,8 +1,9 @@
 {
   "videos": {
     "compras-amazon": {
-      "title": "Produtos que comprei na Amazon",
-      "description": "Todos os produtos mostrados no vídeo, com opções de compra para Portugal/Espanha e Brasil.",
+      "language": "en",
+      "title": "Products I Bought on Amazon",
+      "description": "All products shown in the video, with shopping options for Portugal, Spain, and Brazil.",
       "products": [
         "petlibro-rfid-feeder",
         "petlibro-wireless-fountain",

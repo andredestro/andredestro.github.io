@@ -1,11 +1,12 @@
-// Run with Playwright installed: node tests/analytics.cjs
-const { chromium } = require('playwright');
+// Run after npm install: npm test
+const { chromium } = require('playwright-core');
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '..');
 const origin = 'https://andredestro.github.io';
 const key = 'andre_destro_analytics_consent';
+const expectedAppCount = JSON.parse(fs.readFileSync(path.join(root, 'apps.json'), 'utf8')).apps.length;
 
 (async () => {
   const browser = await chromium.launch({ headless: true, channel: 'chrome' });
@@ -38,7 +39,13 @@ const key = 'andre_destro_analytics_consent';
         try {
           if (fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
           return route.fulfill({ body: fs.readFileSync(file), contentType: ({ '.html': 'text/html', '.js': 'text/javascript', '.json': 'application/json', '.css': 'text/css' })[path.extname(file)] || 'application/octet-stream' });
-        } catch { return route.fulfill({ status: 404, body: 'Not found' }); }
+        } catch {
+          const notFoundPage = path.join(root, '404.html');
+          if (fs.existsSync(notFoundPage)) {
+            return route.fulfill({ status: 404, body: fs.readFileSync(notFoundPage), contentType: 'text/html' });
+          }
+          return route.fulfill({ status: 404, body: 'Not found' });
+        }
       });
       return { context, page };
     }
@@ -122,10 +129,20 @@ const key = 'andre_destro_analytics_consent';
     {
       const { page, context } = await fixture({ granted: true, failImport: true });
       await page.goto(origin + '/apps/'); await page.waitForSelector('.card');
-      assert.equal(await page.locator('.card').count(), 8);
+      assert.equal(await page.locator('.card').count(), expectedAppCount);
       assert.equal(await page.evaluate(() => calls.length), 0);
       await context.close();
     }
-    console.log('PASS: consent, initialization race, revocation, placements, catalog success/failure, CTA deduplication, local preview, blocked SDK. No real Google requests sent.');
+    // The custom 404 uses its own stable type instead of the generic fallback.
+    {
+      const { page, context } = await fixture({ granted: true });
+      await page.goto(origin + '/missing-page');
+      await page.waitForFunction(() => calls.some(c => c[0] === 'init'));
+      await clickWithoutNavigation(page, 'main a[href="/"]');
+      const navigation = (await events(page)).find(c => c[1] === 'navigation_click');
+      assert.equal(navigation[2].page_type, 'not_found');
+      await context.close();
+    }
+    console.log('PASS: consent, initialization race, revocation, placements, catalog success/failure, CTA deduplication, local preview, blocked SDK, and 404 page type. No real Google requests sent.');
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

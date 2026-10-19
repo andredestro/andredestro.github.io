@@ -1,0 +1,14 @@
+{
+  "name": "andredestro-github-io",
+  "private": true,
+  "scripts": {
+    "generate:video-pages": "node scripts/generate-video-pages.mjs",
+    "test": "node tests/analytics.cjs"
+  },
+  "devDependencies": {
+    "playwright-core": "1.62.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

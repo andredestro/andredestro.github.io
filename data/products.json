@@ -70,7 +70,7 @@
     },
     {
       "id": "petlibro-rfid-feeder",
-      "name": "PETLIBRO — Alimentador automático RFID para gatos",
+      "name": "PETLIBRO — Automatic RFID Cat Feeder",
       "icon": "pet-feeder",
       "links": {
         "amazonEs": "https://amzn.to/4hoCqeC",
@@ -80,7 +80,7 @@
     },
     {
       "id": "petlibro-wireless-fountain",
-      "name": "PETLIBRO — Fonte de água sem fio para gatos",
+      "name": "PETLIBRO — Cordless Cat Water Fountain",
       "icon": "fountain",
       "links": {
         "amazonEs": "https://amzn.to/44GNRXz",
@@ -89,7 +89,7 @@
     },
     {
       "id": "sonoff-matter-switch",
-      "name": "SONOFF Matter — Interruptor Wi-Fi inteligente",
+      "name": "SONOFF Matter — Smart Wi-Fi Switch",
       "icon": "switch",
       "links": {
         "amazonEs": "https://amzn.to/4bTVMVj",
@@ -99,7 +99,7 @@
     },
     {
       "id": "usb-cooling-fan",
-      "name": "Ventilador de refrigeração USB",
+      "name": "USB Cooling Fan",
       "icon": "fan",
       "links": {
         "amazonEs": "https://amzn.to/4bVkvZo",
@@ -108,7 +108,7 @@
     },
     {
       "id": "philips-nt5650",
-      "name": "Philips Series 5000 NT5650/16 — Aparador",
+      "name": "Philips Series 5000 NT5650/16 — Trimmer",
       "icon": "trimmer",
       "links": {
         "amazonEs": "https://amzn.to/4whbrX9",
@@ -118,7 +118,7 @@
     },
     {
       "id": "tp-link-tl-sg105",
-      "name": "TP-Link TL-SG105 — Switch gigabit de 5 portas",
+      "name": "TP-Link TL-SG105 — 5-Port Gigabit Switch",
       "icon": "ethernet",
       "links": {
         "amazonEs": "https://amzn.to/4fbaBVM",
@@ -128,7 +128,7 @@
     },
     {
       "id": "ethernet-cat7-03m",
-      "name": "Cabo Ethernet RJ45 Cat 7 — 0,3 m",
+      "name": "Cat 7 RJ45 Ethernet Cable — 0.3 m",
       "icon": "cable",
       "links": {
         "amazonEs": "https://amzn.to/3RjEES3"

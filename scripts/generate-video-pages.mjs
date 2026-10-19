@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-// Gera as páginas produtos/<slug>/index.html a partir de data/videos.json,
-// mantém o sitemap.xml em sincronia e cria QR codes que ainda não existem.
+// Generates produtos/<slug>/index.html pages from data/videos.json,
+// keeps sitemap.xml in sync, and creates QR codes that do not exist yet.
 //
-// Fluxo para um vídeo novo:
-//   1. Adicione os produtos em data/products.json (se ainda não existirem)
-//   2. Adicione a entrada do vídeo em data/videos.json
-//   3. Rode: node scripts/generate-video-pages.mjs
+// Workflow for a new video:
+//   1. Add products to data/products.json (if they do not exist yet)
+//   2. Add the video entry to data/videos.json
+//   3. Run: node scripts/generate-video-pages.mjs
 //
-// Uso: node scripts/generate-video-pages.mjs [slug]
-//   Sem argumento, regenera as páginas de todos os vídeos.
+// Usage: node scripts/generate-video-pages.mjs [slug]
+//   With no argument, regenerates every video page.
 
 import { readFile, writeFile, mkdir, access } from "node:fs/promises";
 import { execFile } from "node:child_process";
@@ -21,18 +21,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const baseUrl = "https://andredestro.github.io";
 const sitemapPath = path.join(root, "sitemap.xml");
 const pageCopy = {
-  en: {
-    eyebrow: "Products from the video",
-    setupTitle: "My programming setup",
-    setupDescription: "Monitor, keyboard, mouse, dock, audio and lighting",
-    affiliateNote: "Some links on this page are affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. Prices, sellers and availability may change."
-  },
-  "pt-BR": {
-    eyebrow: "Produtos do vídeo",
-    setupTitle: "Meu setup de programação",
-    setupDescription: "Monitor, teclado, mouse, dock, áudio e iluminação",
-    affiliateNote: "Alguns links desta página podem ser de afiliado. Ao comprar por eles, posso receber uma pequena comissão, sem custo adicional para você. Preços, vendedores e disponibilidade podem mudar."
-  }
+  eyebrow: "Products from the video",
+  setupTitle: "My programming setup",
+  setupDescription: "Monitor, keyboard, mouse, dock, audio and lighting",
+  affiliateNote: "Some links on this page are affiliate links. If you buy through them, I may earn a small commission at no extra cost to you. Prices, sellers and availability may change."
 };
 
 function escapeHtml(text) {
@@ -56,8 +48,8 @@ function insertSitemapUrl(sitemap, pageUrl) {
   const block = `  <url>\n    <loc>${pageUrl}</loc>\n  </url>\n`;
   const urlBlockRegex = /  <url>\n    <loc>([^<]+)<\/loc>\n  <\/url>\n/g;
 
-  // Insere depois do último bloco de /produtos/ (ou do /setup/) para manter
-  // as URLs agrupadas antes das páginas de apps.
+  // Insert after the last /produtos/ block (or /setup/) to keep these URLs
+  // grouped before the app pages.
   let insertAt = -1;
   for (const match of sitemap.matchAll(urlBlockRegex)) {
     const loc = match[1];
@@ -75,11 +67,11 @@ function insertSitemapUrl(sitemap, pageUrl) {
 async function generateQrCode(slug, pageUrl) {
   const qrPath = path.join(root, "assets/qr", `${slug}.png`);
   if (await fileExists(qrPath)) {
-    console.log(`  QR já existe: assets/qr/${slug}.png`);
+    console.log(`  QR already exists: assets/qr/${slug}.png`);
     return;
   }
   if (process.platform !== "darwin") {
-    console.warn(`  QR não gerado (requer macOS): swift scripts/generate-qr.swift ${pageUrl} assets/qr/${slug}.png`);
+    console.warn(`  QR not generated (requires macOS): swift scripts/generate-qr.swift ${pageUrl} assets/qr/${slug}.png`);
     return;
   }
   const { stdout } = await execFileAsync("swift", [
@@ -101,15 +93,20 @@ let sitemapChanged = false;
 for (const slug of slugs) {
   const video = videosData.videos[slug];
   if (!video) {
-    console.error(`Vídeo não encontrado em data/videos.json: ${slug}`);
+    console.error(`Video not found in data/videos.json: ${slug}`);
     process.exitCode = 1;
     continue;
   }
 
-  console.log(`Vídeo: ${slug}`);
+  console.log(`Video: ${slug}`);
   const pageUrl = `${baseUrl}/produtos/${slug}/`;
-  const language = video.language ?? "pt-BR";
-  const copy = pageCopy[language] ?? pageCopy["pt-BR"];
+  const language = video.language ?? "en";
+  if (language !== "en") {
+    console.error(`Unsupported language for ${slug}: ${language}. Video pages must be in English.`);
+    process.exitCode = 1;
+    continue;
+  }
+  const copy = pageCopy;
   const html = template
     .replaceAll("{{slug}}", slug)
     .replaceAll("{{url}}", pageUrl)
@@ -124,17 +121,22 @@ for (const slug of slugs) {
   const pageDir = path.join(root, "produtos", slug);
   await mkdir(pageDir, { recursive: true });
   await writeFile(path.join(pageDir, "index.html"), html);
-  console.log(`  Página gerada: produtos/${slug}/index.html`);
+  console.log(`  Page generated: produtos/${slug}/index.html`);
 
   if (sitemap.includes(`<loc>${pageUrl}</loc>`)) {
-    console.log("  Sitemap já contém a URL.");
+    console.log("  Sitemap already contains the URL.");
   } else {
     sitemap = insertSitemapUrl(sitemap, pageUrl);
     sitemapChanged = true;
-    console.log("  URL adicionada ao sitemap.xml.");
+    console.log("  URL added to sitemap.xml.");
   }
 
-  await generateQrCode(slug, pageUrl);
+  try {
+    await generateQrCode(slug, pageUrl);
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.split("\n", 1)[0] : String(error);
+    console.warn(`  QR generation skipped for ${slug}: ${reason}`);
+  }
 }
 
 if (sitemapChanged) {

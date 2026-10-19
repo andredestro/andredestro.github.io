@@ -12,10 +12,13 @@ const SiteAnalytics = (() => {
   // Preview traffic never reaches the production property.
   const productionHost = window.location.hostname === "andredestro.github.io";
   const pagePath = window.location.pathname;
-  const pageType = pagePath === "/" ? "home"
+  const pageType = document.body.dataset.pageType
+    || (pagePath === "/" ? "home"
     : pagePath.startsWith("/apps/") ? "apps"
     : pagePath.startsWith("/setup/") ? "setup"
-    : pagePath.startsWith("/produtos/") ? "video_products" : "privacy";
+    : pagePath.startsWith("/produtos/") ? "video_products"
+    : pagePath.startsWith("/privacy/") ? "privacy"
+    : "other");
   const pageContext = { page_path: pagePath, page_type: pageType };
   if (document.body.dataset.videoSlug) pageContext.video_slug = document.body.dataset.videoSlug;
   const loadStates = new Map();

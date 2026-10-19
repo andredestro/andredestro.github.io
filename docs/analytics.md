@@ -26,7 +26,8 @@ replay. Load counts therefore describe consenting page visits, not all requests.
 ## Event catalog
 
 Every custom event includes `page_path` and `page_type` (`home`, `apps`, `setup`,
-`video_products`, `privacy`). Video pages also include `video_slug`.
+`video_products`, `privacy`, `not_found`, or the safe fallback `other`). Video
+pages also include `video_slug`.
 
 | Event | Meaning | Additional parameters |
 | --- | --- | --- |
@@ -69,10 +70,12 @@ counts. Navigation is never delayed merely to send analytics.
 
 ## Automated checks
 
-With Node.js, Playwright and Chrome available, run:
+With Node.js 20 or newer and Chrome available, install the declared development
+dependency once and run:
 
 ```sh
-node tests/analytics.cjs
+npm install
+npm test
 ```
 
 The tests intercept Firebase modules and all network requests; they do not send
