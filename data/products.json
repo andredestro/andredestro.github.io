@@ -5,7 +5,7 @@
       "name": "XIAOMI Curved Gaming Monitor G34WQi",
       "icon": "monitor",
       "links": {
-        "amazonEs": "https://amzn.to/3ROSiN4",
+        "amazonEs": "https://link.amazon/B0j1ACDbE",
         "amazonBr": "https://link.amazon/B01GoeoCT",
         "mercadoLivre": "https://meli.la/1cibzgP"
       }
@@ -35,7 +35,7 @@
       "name": "Keychron K3 Mechanical Keyboard",
       "icon": "keyboard",
       "links": {
-        "amazonEs": "https://amzn.to/4b2hZ3f",
+        "amazonEs": "https://link.amazon/B09lqm3Ee",
         "amazonBr": "https://link.amazon/B00gSUBeJ",
         "mercadoLivre": "https://meli.la/1F5fjfG"
       }
@@ -47,22 +47,40 @@
       "links": {
         "amazonEs": "https://amzn.to/4gOovOT",
         "amazonBr": "https://link.amazon/B0dCNTBvp",
+        "mercadoLivre": "https://meli.la/2RqzJef"
+      }
+    },
+    {
+      "id": "logitech-mx-master-4",
+      "name": "Logitech MX Master 4",
+      "icon": "mouse",
+      "links": {
+        "amazonEs": "https://link.amazon/B09ia9Igx",
+        "amazonBr": "https://link.amazon/B03cOW8w5",
         "mercadoLivre": "https://meli.la/1bRmf3q"
       }
     },
     {
-      "id": "sony-wh-1000xm5",
-      "name": "Sony WH-1000XM5",
+      "id": "sony-wh-1000xm4",
+      "name": "Sony WH-1000XM4",
       "icon": "headphones",
       "links": {
-        "amazonEs": "https://amzn.to/4gL5oVT",
-        "amazonBr": "https://link.amazon/B07OjRee4",
-        "mercadoLivre": "https://meli.la/2nfUvE2"
+        "amazonEs": "https://link.amazon/B09T2FnEf",
+        "amazonBr": "https://link.amazon/B02iH9lDN"
+      }
+    },
+    {
+      "id": "sony-wh-1000xm6",
+      "name": "Sony WH-1000XM6",
+      "icon": "headphones",
+      "links": {
+        "amazonEs": "https://link.amazon/B0gKcflsp",
+        "amazonBr": "https://link.amazon/B02TUeZRa"
       }
     },
     {
       "id": "ugreen-zapix-2-in-1",
-      "name": "UGREEN Zapix 2-in-1 MagSafe Wireless Charger",
+      "name": "UGREEN MagSafe Wireless Charger",
       "icon": "charger",
       "links": {
         "amazonEs": "https://amzn.to/4hoAIdd"

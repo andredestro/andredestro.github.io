@@ -12,13 +12,15 @@
       "title": "Keyboard & mouse",
       "products": [
         "keychron-k3",
-        "logitech-mx-master-3s"
+        "logitech-mx-master-3s",
+        "logitech-mx-master-4"
       ]
     },
     {
       "title": "Audio & charging",
       "products": [
-        "sony-wh-1000xm5",
+        "sony-wh-1000xm4",
+        "sony-wh-1000xm6",
         "ugreen-zapix-2-in-1"
       ]
     }
